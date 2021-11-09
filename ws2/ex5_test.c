@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include <string.h>
-#include <assert.h>
+#include <stdio.h>
+#include <string.h> //strlen fun
+#include <assert.h> //asser func
 #include "ex5.h"	
 
 int main()
