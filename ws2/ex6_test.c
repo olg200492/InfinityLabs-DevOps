@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <string.h>
+#include <stdio.h> // printf
+#include <assert.h> //assert
 #include "ex6.h"	
 
 int main()
@@ -7,14 +7,11 @@ int main()
     char leftStr[] = "abc";
     char rightStr[] = "abcd";
       
-    int res = strcmp(leftStr, rightStr);
-      
-    if (res==0)
-        printf("Strings are equal");
-    else 
-        printf("Strings are unequal");
-          
-    printf("\nValue returned by strcmp() is:  %d\n" , res);
+    int res = StrCmp(leftStr, rightStr);
+    
+    assert(res);
+    printf("Strings are unequal\n");         
+
 
     return (0);
 }

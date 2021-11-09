@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #ifndef _EX6_H_
 #define _EX6_H_
 

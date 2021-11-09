@@ -9,6 +9,7 @@ size_t StrLen(const char *s)
 
     while(s[i])
     {
+        i++;
         size++;
     }
 

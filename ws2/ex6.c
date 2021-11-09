@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include "ex2.h"
+#include "ex6.h"
 
 //Function compares the string pointed to by str1 to the string pointed to by str2
 int StrCmp(const char *str1, const char *str2)

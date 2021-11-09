@@ -9,9 +9,9 @@ int main()
   
     printf("Length of string in builtin strlen is: %ld\n", strlen(str));
 
-    printf("Length of string in re-implement StrLen is: %ld\n", strlen(str));
+    printf("Length of string in re-implement StrLen is: %ld\n", StrLen(str));
 
-    assert(strlen(str) == 5);
+    assert(StrLen(str) == 5);
 
     return (0);
 }
