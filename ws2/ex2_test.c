@@ -4,23 +4,16 @@
 
 int main()
 {
-    int arr1[] = { 0, 1, 2, 3};
-    int *arr2 = NULL;
+    int arr1[] = { 8, 1, 2, 3};
+    int arr2[4] = { 0, 0, 0, 0};
     int i = 0;
 
-    arr2 = CopyAnIntegerArray(arr1);
-    if(arr2 != NULL)
-    {
-        int size_of_arr2 = sizeof(arr2) / sizeof(arr2[0]);
-        printf("%d\n", size_of_arr2);
-        
-        for(i = 0; i < size_of_arr2; i++)
-        {
-            printf("arr2[%d] = %d ,", i, arr2[i]);
-        }
+    CopyAnIntegerArray(arr1, arr2, 4);
 
-        free(arr2);
-        arr2 = NULL;
+    for(i = 0; i < 4; i++)
+    {
+        printf("arr2[%d] = %d ", i, arr2[i]);
     }
+    printf("\n");
     return (0);
 }

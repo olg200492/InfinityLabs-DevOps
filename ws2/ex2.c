@@ -1,24 +1,14 @@
 #include <stdio.h>
 #include "ex2.h"
 
-//Function recives an integer array and returns a copied array
-int* CopyAnIntegerArray(int *array)
+//Function recives an integer array 1 and empty array and copies values from array1 to array2
+void CopyAnIntegerArray(int *array1, int *array2, int size)
 {
-    int *arr = (int *) malloc(sizeof(array));
-    int array_size = sizeof(array) / sizeof(array[0]);
     int i = 0;
 
-    if( arr == NULL)
-    {
-        printf("Memory not allocated.\n");
-        exit(0);
-    }
-
-    for(i = 0; i < array_size; i++)
+    for(i = 0; i < size; i++)
         {
-            arr[i] = array[i];
+            array2[i] = array1[i];
         }
-
-    return arr;
 
 }
