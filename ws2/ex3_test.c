@@ -10,7 +10,7 @@ int main()
     size_t *d = &b;
 
     printf("Before swap: a = %lu, b = %lu.\n", a, b);
-    SwapsSize_t(&a, &b);
+    SwapsSize_t(c, d);
     printf("After swap: a = %lu, b = %lu.\n", a, b);
 
     return (0);

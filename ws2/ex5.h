@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <stdlib.h> // size_t data type
 #ifndef _EX5_H_
 #define _EX5_H_
 
