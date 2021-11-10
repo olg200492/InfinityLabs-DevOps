@@ -4,10 +4,26 @@
 //Copies the string pointed to, by src to dest.
 #include "string.h"
 
+void TestStrcpy();
+void TestStrncpy();
+void TestStrcasecmp();
+void TestStrchar();
+void TestStrdup();
+void TestStrcat();
+void TestStrncat();
 
 int main()
 {
-    /* strcpy test case: */
+
+   
+
+
+
+    return (0);
+}
+
+void TestStrcpy()
+{
     char str1_src[] = "Hello World!";
     char* str1_dest;
     char str2_src[] = "Hello Geeks!";
@@ -34,11 +50,10 @@ int main()
         printf("\"%s\" did not copied to \"%s \n", str2_src, str2_dest);
     }
 
-   
-    /*******************************************************************************************/
+}
 
-    /* strncpy test case: */
-
+void TestStrncpy()
+{
     char str3_src[] = "Hello World!";
     char* str3_dest;
     char str4_src[] = "";
@@ -66,11 +81,10 @@ int main()
     {
         printf("strncpy did not success,only copied %d character : \"%s\"\n", strlen(str3_dest), str3_dest);
     }
+}
 
-    /* strcasecmp test case/
-
-    
-    /*******************************************************************************************/
+void TestStrcasecmp()
+{
     printf("Test 3: strcasecmp\n\n");
     
 
@@ -107,10 +121,10 @@ int main()
     {
         printf("\"%s is not equel to \"%s\"\n");
     }
+}
 
-    /* ******************************************************* */
-    
-    //strchar rest case
+void TestStrchar()
+{
     const char str1[] = "http://www.google.com";
     const char ch1 = 'g';
     char *ret1 = strchar(str1, ch1);
@@ -135,24 +149,59 @@ int main()
         printf("%c  does not ouccorns in %s\n", str2);
     }
 
+}
 
-     /* ******************************************************* */
-     /*strdup test case */
+void TestStrdup()
+{
+    char* str1_dup = "Hi guys!";
+    char* str2_dup = strdup(str1_dup);
+    char* str3_dup = "";
+    char* str4_dup = strdup(str3_dup);
 
-     char* str1_dup = "Hi guys!";
-     char* str2_dup = strdup(str1_dup);
-
-     if(strcmp(str1_dup, str2_dup) == 0)
-     {
+    if(strcmp(str1_dup, str2_dup) == 0)
+    {
         printf("\"%s\" is idintical string to \"%s\"\n", str1_dup, str2_dup);
-     }
+    }
+    else
+    {
+        printf("\"%s\" is not idintical string to \"%s\"\n", str1_dup, str2_dup);
+    }
 
+    if(strcmp(str3_dup, str4_dup) == 0)
+    {
+        printf("\"%s\" is idintical string to \"%s\"\n", str1_dup, str2_dup);
+    }
+    else
+    {
+        printf("\"%s\" is not idintical string to \"%s\"\n", str1_dup, str2_dup);
+    }
+    free(str2_dup);
+    free(str4_dup);
+    str2_dup = NULL;
+    str4_dup = NULL;  
+}
 
+void TestStrcat()
+{
 
+    char dest[50] = "This is an";
+    char src[50] = " example";
 
+    printf("Befor strcat:\n");
+    printf("%s\n",dest);
+    strcat(dest, src);
+    printf("After strcat:\n");
+    printf("%s\n",dest);
+}
 
+void TestStrncat()
+{
+     char dest1[25] = "This is an example";
+    char src1[50] = " to show working of strncat() this is not added";
 
-    
-
-    return (0);
+    printf("Befor strncat:\n");
+    printf("%s\n",dest1);
+    strcat(dest1, src1);
+    printf("After strncat:\n");
+    printf("%s\n",dest1);
 }

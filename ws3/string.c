@@ -89,7 +89,7 @@ size_t strlen(const char *s)
 
 
 //Function compares the string pointed to by str1 to the string pointed to by str2
-int StrCmp(const char *str1, const char *str2)
+int strcmp(const char *str1, const char *str2)
 {
     while( *str1 && *str2 )
     {
