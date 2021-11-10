@@ -33,5 +33,11 @@ int strcasecmp(const char *string1, const char *string2);
 char * strdup( const char *str1 );
 
 
+//Function computes the length of the string str up to, but not including the terminating null character.
+size_t strlen(const char *s);
+
+//Function compares the string pointed to by str1 to the string pointed to by str2
+int strcmp(const char *str1, const char *str2);
+
 
 #endif

@@ -1,5 +1,5 @@
 #include <stdio.h> // printf
-#include <assert.h> //assert
+#include <assert.h> //assertג
 #include "ex6.h"	
 
 int main()

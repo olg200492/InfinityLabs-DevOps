@@ -19,7 +19,7 @@ int main()
     printf("Test 5: %s is not a plindrom and IsPali should return 0: %d\n", str5, IsPali(str5));
 
     /*******************************************************************************************/
-
+    
     // Boom7 test case:
     int start1 = 0, end1 = 7;
     int start2 = 14, end2 = 21;
@@ -27,20 +27,21 @@ int main()
     int start4 = 10, end4 = -6;
     
     printf("Test 6:\n");
-    printf("Range 0 - 7 should print:\n0, 1, 2, 3, 4, 5, 6, BOOM\n");
-    Boom7(start1, start1);
+    printf("Range 0 - 7 should print:\n0, 1, 2, 3, 4, 5, 6, BOOM\n\n");
+    Boom7(start1, end1);
 
     printf("Test 7:\n");
-    printf("Range 14 - 21 should print:\nBOOM, 15, 16, 17, 18, 19, 20, BOOM\n");
-    Boom7(start2, start2);
+    printf("Range 14 - 21 should print:\nBOOM, 15, 16, 17, 18, 19, 20, BOOM\n\n");
+    Boom7(start2, end2);
 
     printf("Test 8:\n");
-    printf("Range 0 - 0 should print:\n0\n");
-    Boom7(start3, start3);
+    printf("Range 0 - 0 should print:\n0\n\n");
+    Boom7(start3, end3);
 
     printf("Test 9:\n");
-    printf("Range (-10) - 0 should print:\n Error:Invalit input\n");
-    Boom7(start4, start4);
+    printf("Range 10 - (-6) should print:\n Error:Invalit input\n\n");
+    //Boom7(start4, end4);
+    
 
     /*******************************************************************************************/
 
@@ -48,18 +49,19 @@ int main()
     char string1BeforeDelSpace[] = " and ";
     char string1AfterDelSpace[] = "and";
     char string2BeforeDelSpace[] = "andI buy Milk";
-    char string2AfterDelSpace[] = "andIbuyMilk";
-    char string3BeforeDelSpace[] = " Can I think about this?  ";
-    char string3AfterDelSpace[] = "CanIthinkaboutthis?";
+    char string2AfterDelSpace[] = "andI buy Milk";
+    char string3BeforeDelSpace[] = " Can I think about    this?  ";
+    char string3AfterDelSpace[] = "Can I think about this?";
     char string4BeforeDelSpace[] = "";
     char string4AfterDelSpace[] = "";
 
+    
     DelSpace(string1BeforeDelSpace);
     DelSpace(string2BeforeDelSpace);
     DelSpace(string3BeforeDelSpace);
     DelSpace(string4BeforeDelSpace);
 
-    printf("Test 10:\n");
+    printf("Test 10:\n\n");
     
     if(strcmp(string1BeforeDelSpace, string1AfterDelSpace) == 0)
     {
@@ -70,7 +72,7 @@ int main()
         printf("\"%s\" is not equel to \"%s\"\n", string1BeforeDelSpace, string1AfterDelSpace);
     }
 
-    printf("Test 11:\n");
+    printf("Test 11:\n\n");
     
     if(strcmp(string2BeforeDelSpace, string2AfterDelSpace) == 0)
     {
@@ -82,7 +84,7 @@ int main()
     }
 
 
-    printf("Test 12:\n");
+    printf("Test 12:\n\n");
 
     if(strcmp(string3BeforeDelSpace, string3AfterDelSpace) == 0)
     {
@@ -93,7 +95,7 @@ int main()
         printf("\"%s\" is not equel to \"%s\"\n", string3BeforeDelSpace, string3AfterDelSpace);
     }
 
-    printf("Test 13:\n");
+    printf("Test 13:\n\n");
    
     if(strcmp(string4BeforeDelSpace, string4AfterDelSpace) == 0)
     {
@@ -104,5 +106,6 @@ int main()
         printf("\"%s\" is not equel to \"%s\"\n", string4BeforeDelSpace, string4AfterDelSpace);
     }
 
+    
     return (0);
 }
