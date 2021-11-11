@@ -14,11 +14,6 @@ void TestStrncat();
 
 int main()
 {
-
-   
-
-
-
     return (0);
 }
 
