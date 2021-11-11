@@ -4,20 +4,24 @@
 //Copies the string pointed to, by src to dest.
 #include "string.h"
 
-void TestStrcpy();
-void TestStrncpy();
-void TestStrcasecmp();
-void TestStrchar();
-void TestStrdup();
-void TestStrcat();
-void TestStrncat();
+void TestStrcpy(void);
+void TestStrncpy(void);
+void TestStrcasecmp(void);
+void TestStrchar(void);
+void TestStrdup(void);
+void TestStrcat(void);
+void TestStrncat(void);
+void TestStrstr(void);
+void TestStrspn(void);
+void TestStrtok(void);
 
 int main()
 {
+    TestStrcasecmp();
     return (0);
 }
 
-void TestStrcpy()
+void TestStrcpy(void)
 {
     char str1_src[] = "Hello World!";
     char* str1_dest;
@@ -47,7 +51,7 @@ void TestStrcpy()
 
 }
 
-void TestStrncpy()
+void TestStrncpy(void)
 {
     char str3_src[] = "Hello World!";
     char* str3_dest;
@@ -78,7 +82,7 @@ void TestStrncpy()
     }
 }
 
-void TestStrcasecmp()
+void TestStrcasecmp(void)
 {
     printf("Test 3: strcasecmp\n\n");
     
@@ -118,7 +122,7 @@ void TestStrcasecmp()
     }
 }
 
-void TestStrchar()
+void TestStrchar(void)
 {
     const char str1[] = "http://www.google.com";
     const char ch1 = 'g';
@@ -146,7 +150,7 @@ void TestStrchar()
 
 }
 
-void TestStrdup()
+void TestStrdup(void)
 {
     char* str1_dup = "Hi guys!";
     char* str2_dup = strdup(str1_dup);
@@ -176,7 +180,7 @@ void TestStrdup()
     str4_dup = NULL;  
 }
 
-void TestStrcat()
+void TestStrcat(void)
 {
 
     char dest[50] = "This is an";
@@ -189,7 +193,7 @@ void TestStrcat()
     printf("%s\n",dest);
 }
 
-void TestStrncat()
+void TestStrncat(void)
 {
      char dest1[25] = "This is an example";
     char src1[50] = " to show working of strncat() this is not added";
@@ -200,3 +204,105 @@ void TestStrncat()
     printf("After strncat:\n");
     printf("%s\n",dest1);
 }
+
+void TestStrstr(void)
+{
+    const char haystack1[] = "TutorialsPoint";
+    const char needle1[] = "Point";
+
+    const char haystack2[] = "Google Buy Bob";
+    const char needle2[] = "Hi";
+    
+    
+    char *ret1 = strstr(haystack1, needle1);
+    char *ret2 = strstr(haystack2, needle2);
+
+    if (ret2 != NULL)
+    {
+        printf("strstr did found needle = \"%s\" in haystack = \"%s\"\n\n", needle1, haystack1);
+    }
+    else
+    {
+        printf("strstr did not found needle = \"%s\" in haystack = \"%s\"\n\n", needle1, haystack1);
+    }
+
+    if (ret2 != NULL)
+    {
+        printf("strstr did found needle = \"%s\" in haystack = \"%s\"\n\n", needle1, haystack1);
+    }
+    else
+    {
+        printf("strstr did not found needle = \"%s\" in haystack = \"%s\"\n\n", needle1, haystack1);
+    }
+
+
+}
+
+
+void TestStrspn(void)
+{
+    char *str1 = "eee";
+    char *str2 = "geek";
+    char *str3 = "abcd";
+    char *str4 = "";
+    char *str5 = "ggeeeekk";
+    
+    size_t len1 = strspn(str1, str2);
+    size_t len2 = strspn(str2, str2);
+    size_t len3 = strspn(str3, str2);
+    size_t len4 = strspn(str4, str2);
+    size_t len5 = strspn(str5, str2);
+
+    if (len1 == 3)
+    {
+        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str1, len1, str2);
+    }
+    else
+    {
+        printf("returned invalid output for strspn(%s , %s)\n", str1, str2);
+    }
+
+    if (len2 == 4)
+    {
+        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str2, len2, str2);
+    }
+    else
+    {
+        printf("returned invalid output for strspn(%s , %s)\n", str2, str2);
+    }
+
+    if (len3 == 0)
+    {
+        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str3, len3, str2);
+    }
+    else
+    {
+        printf("returned invalid output for strspn(%s , %s)\n", str3, str2);
+    }
+
+    if (len4 == 0)
+    {
+        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str4, len4, str2);
+    }
+    else
+    {
+        printf("returned invalid output for strspn(%s , %s)\n", str4, str2);
+    }
+
+    if (len5 == 8)
+    {
+        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str5, len5, str2);
+    }
+    else
+    {
+        printf("returned invalid output for strspn(%s , %s)\n", str5, str2);
+    }
+
+
+}
+
+void TestStrtok(void)
+{
+    char str1 = "";
+}
+
