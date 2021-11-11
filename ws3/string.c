@@ -26,7 +26,7 @@ char *strcpy(char *dest, const char *src)
 /*
     Pasudo Code strncpy:
     1. set i = 0
-    2. for i<n and src[i] != '\0'
+    2. for i < n and src[i] != '\0'
         2.1 set dest[i] = src[i]
     3. while i <n
         3.1 dest[i] = '\0'
@@ -63,9 +63,26 @@ char *strncat(char *dest, const char *src, size_t n)
 }
 
 //Searches for the first occurrence of the character c (an unsigned char) in the string pointed to, by the argument str.
+/*
+    1. set char temp - src
+    2. while *temp != NULL
+        2.1 if temp == c
+            2.1.1 return temp
+        2.2 ++temp
+    3. return NULL
+*/
 char *strchr(const char *str, int c)
 {
-
+    char *temp = str;
+    while (*temp != '\0')
+    {
+        if (*temp == c)
+        {
+            return temp;
+        }
+        ++temp;
+    }
+    return (NULL);
 }
 
 //Calculates the length of the initial segment of str1 which consists entirely of characters in str2.
@@ -89,6 +106,17 @@ char *strtok(char *str, const char *delim)
 //compares string1 and string2 without sensitivity to case. All alphabetic characters in string1 and string2 are converted to lowercase before comparison.
 int strcasecmp(const char *string1, const char *string2)
 {
+    while (((*string1 - *string2) == (0 || 32 || -32)) && *string1 != '\0' && *string2 != '\0')
+    {   
+        string1++;
+        string2++;
+    
+    }
+    if (*string1 - *string2 >=0)
+    {
+
+    }
+    return (*string1 - *string2);  
 
 }
 

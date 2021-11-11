@@ -18,7 +18,8 @@ void TestStrtok(void);
 int main()
 {
     //TestStrcpy();
-    TestStrncpy();
+    //TestStrncpy();
+    TestStrchar();
     return (0);
 }
 
@@ -131,22 +132,22 @@ void TestStrchar(void)
 
     const char str2[] = "Bob";
     const char ch2 = 'z';
-    char *ret2 = strchr(str1, ch1);
+    char *ret2 = strchr(str2, ch2);
 
     if(ret1 != NULL)
     {
-        printf("%c first ouccorns in %s start in %s\n", ch1, str1, ret1);
+        printf("%c first occurre in %s start in %s\n", ch1, str1, ret1);
     }
     else{
-        printf("%c does not ouccor in %s s\n", ch1, str1);
+        printf("%c does not occurre in %s s\n", ch1, str1);
     }
 
      if(ret2 != NULL)
     {
-        printf("%c first ouccorns in %s start in %s\n", ch2, str2, ret2);
+        printf("%c first occurre in %s start in %s\n", ch2, str2, ret2);
     }
     else{
-        printf("%c  does not ouccorns in %s\n", ch2, str2);
+        printf("%c  does not occurre in %s\n", ch2, str2);
     }
 
 }
