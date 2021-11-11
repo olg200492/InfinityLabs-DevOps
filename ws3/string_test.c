@@ -17,36 +17,37 @@ void TestStrtok(void);
 
 int main()
 {
-    TestStrcasecmp();
+    //TestStrcpy();
+    TestStrncpy();
     return (0);
 }
 
 void TestStrcpy(void)
 {
     char str1_src[] = "Hello World!";
-    char* str1_dest;
+    char str1_dest[50];
     char str2_src[] = "Hello Geeks!";
-    char* str2_dest = "Hi Guyes"; 
+    char str2_dest[50]; 
    
-    strcpy(str1_src, str1_dest);
-    strcpy(str2_src, str2_dest);
+    strcpy(str1_dest, str1_src);
+    strcpy(str2_dest, str2_src);
 
-    printf("Test 1: strcmp\n\n");
+    printf("Test 1: strcpy\n\n");
 
     if(strcmp(str1_src, str1_dest) == 0)
     {
-        printf("\"%s\" is copied to \"%s \n", str1_src, str1_dest);
+        printf("src:\"%s\" is copied to dest:\"%s \n", str1_src, str1_dest);
     }
     else{
-        printf("\"%s\" did not copied to \"%s \n", str1_src, str1_dest);
+        printf("serc:\"%s\" did not copied to dest\"%s\" \n", str1_src, str1_dest);
     }
 
     if(strcmp(str2_src, str2_dest) == 0)
     {
-        printf("\"%s\" is copied to \"%s \n", str2_src, str2_dest);
+        printf("src:\"%s\" is copied to dest:\"%s \n", str2_src, str2_dest);
     }
     else{
-        printf("\"%s\" did not copied to \"%s \n", str2_src, str2_dest);
+        printf("src:\"%s\" did not copied to dest\"%s\" \n", str2_src, str2_dest);
     }
 
 }
@@ -54,31 +55,31 @@ void TestStrcpy(void)
 void TestStrncpy(void)
 {
     char str3_src[] = "Hello World!";
-    char* str3_dest;
-    char str4_src[] = "";
-    char* str4_dest;
+    char str3_dest[50];
+    char str4_src[] = "Google buy Bob";
+    char str4_dest[50];
 
     strncpy(str3_dest, str3_src, 5);
-    strncpy(str4_dest, str4_src, 6);
+    strncpy(str4_dest, str4_src, 20);
 
-    printf("Test 2: strncmp\n\n");
+    printf("Test 2: strncpy\n\n");
 
     if(strlen(str3_dest) == 5)
     {
-        printf("strncpy copied 5 character to destion");
+        printf("strncpy copied 5 character from src: \"%s\"to dest:\"%s\"\n", str3_src, str3_dest);
     }
     else
     {
-        printf("strncpy did not success,only copied %d character : \"%s\"\n", strlen(str3_dest), str3_dest);
+        printf("strncpy did not success,only copied %lu character : \"%s\"\n", strlen(str3_dest), str3_dest);
     }
 
-    if(strlen(str4_dest) == 1)
+    if(strlen(str4_dest) == 14)
     {
-        printf("strncpy copied 5 character to destion");
+        printf("strncpy copied 14 character fron \"%s\" to dest:\"%s\"\n", str4_src, str4_dest);
     }
     else
     {
-        printf("strncpy did not success,only copied %d character : \"%s\"\n", strlen(str3_dest), str3_dest);
+        printf("strncpy did not success,only copied %lu  character : \"%s\"\n", strlen(str4_dest), str4_dest);
     }
 }
 
@@ -91,34 +92,34 @@ void TestStrcasecmp(void)
     char str_case2[] = "hELLO wORLD!";
     char str_case3[] = "string";
     char str_case4[] = "STRING";
-    char str_case5[] = "string";
-    char str_case6[] = "STRING";
+    char str_case5[] = "abc";
+    char str_case6[] = "ab";
 
     if(strcasecmp(str_case1, str_case2) == 0)
     {
-        printf("\"%s is equel to \"%s\"\n");
+        printf("\"%s is equel to \"%s\"\n", str_case1, str_case2);
     }
     else
     {
-        printf("\"%s is not equel to \"%s\"\n");
+        printf("\"%s is not equel to \"%s\"\n", str_case1, str_case2);
     }
 
     if(strcasecmp(str_case3, str_case4) == 0)
     {
-        printf("\"%s is equel to \"%s\"\n");
+        printf("\"%s is equel to \"%s\"\n", str_case3, str_case4);
     }
     else
     {
-        printf("\"%s is not equel to \"%s\"\n");
+        printf("\"%s is not equel to \"%s\"\n", str_case3, str_case4);
     }
 
-    if(strcasecmp(str_case5, str_case6) == 0)
+    if(strcasecmp(str_case5, str_case6) == 'c')
     {
-        printf("\"%s is equel to \"%s\"\n");
+        printf("\"%s is equel to \"%s\"\n", str_case5, str_case6);
     }
     else
     {
-        printf("\"%s is not equel to \"%s\"\n");
+        printf("\"%s is not equel to \"%s\"\n", str_case5, str_case6);
     }
 }
 
@@ -126,18 +127,18 @@ void TestStrchar(void)
 {
     const char str1[] = "http://www.google.com";
     const char ch1 = 'g';
-    char *ret1 = strchar(str1, ch1);
+    char *ret1 = strchr(str1, ch1);
 
     const char str2[] = "Bob";
     const char ch2 = 'z';
-    char *ret2 = strchar(str1, ch1);
+    char *ret2 = strchr(str1, ch1);
 
     if(ret1 != NULL)
     {
         printf("%c first ouccorns in %s start in %s\n", ch1, str1, ret1);
     }
     else{
-        printf("%c does not ouccor in %s s\n", str1);
+        printf("%c does not ouccor in %s s\n", ch1, str1);
     }
 
      if(ret2 != NULL)
@@ -145,7 +146,7 @@ void TestStrchar(void)
         printf("%c first ouccorns in %s start in %s\n", ch2, str2, ret2);
     }
     else{
-        printf("%c  does not ouccorns in %s\n", str2);
+        printf("%c  does not ouccorns in %s\n", ch2, str2);
     }
 
 }
@@ -195,7 +196,7 @@ void TestStrcat(void)
 
 void TestStrncat(void)
 {
-     char dest1[25] = "This is an example";
+    char dest1[25] = "This is an example";
     char src1[50] = " to show working of strncat() this is not added";
 
     printf("Befor strncat:\n");
@@ -255,7 +256,7 @@ void TestStrspn(void)
 
     if (len1 == 3)
     {
-        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str1, len1, str2);
+        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str1, len1, str2);
     }
     else
     {
@@ -264,7 +265,7 @@ void TestStrspn(void)
 
     if (len2 == 4)
     {
-        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str2, len2, str2);
+        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str2, len2, str2);
     }
     else
     {
@@ -273,7 +274,7 @@ void TestStrspn(void)
 
     if (len3 == 0)
     {
-        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str3, len3, str2);
+        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str3, len3, str2);
     }
     else
     {
@@ -282,7 +283,7 @@ void TestStrspn(void)
 
     if (len4 == 0)
     {
-        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str4, len4, str2);
+        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str4, len4, str2);
     }
     else
     {
@@ -291,7 +292,7 @@ void TestStrspn(void)
 
     if (len5 == 8)
     {
-        printf("in \"%s\" there is %d segment consist entirely of characther from \"%s\"\n", str5, len5, str2);
+        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str5, len5, str2);
     }
     else
     {
@@ -303,6 +304,17 @@ void TestStrspn(void)
 
 void TestStrtok(void)
 {
-    char str1 = "";
+    char str[] = "This is - www.tutorialspoint.com - website";
+    char delim[] = "-";
+
+  
+    char *token = strtok(str, delim);
+   
+    printf("Before tokanize the string is %s and token is: %s\n\n", str, delim);
+    while ( token != NULL ) 
+    {
+        printf( " %s\n", token );    
+        token = strtok(NULL, delim);
+   }
 }
 

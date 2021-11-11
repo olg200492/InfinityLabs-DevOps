@@ -1,26 +1,53 @@
 #include "string.h"
 
+/*
+    Pasudo Code strcpy:
+    1. set i = 0, j = 0;
+    2. while src[i] is not NULL will iterate
+        2.1 dest[j] = src[i]
+        2.2 i++
+        2.3 j++
+    3. set dest[j] = '\0'
+    4. return dest
+*/
 char *strcpy(char *dest, const char *src)
 {
-
+    int i = 0, j = 0;
+    while (src[i] != '\0')
+    {
+        dest[j] = src[i];
+        i++;
+        j++;
+    }
+    dest[j] = '\0';
+    return (dest);
 }
 
-//Copies up to n characters from the string pointed to, by src to dest.
+/*
+    Pasudo Code strncpy:
+    1. set i = 0
+    2. for i<n and src[i] != '\0'
+        2.1 set dest[i] = src[i]
+    3. while i <n
+        3.1 dest[i] = '\0'
+        3.2 i++
+    4. return dest
+*/
 char *strncpy(char *dest, const char *src, size_t n)
 {
-    size_t i;
+    size_t i = 0;
 
     for (i = 0; i < n && src[i] != '\0'; i++)
     {
         dest[i] = src[i];
     }
-    for ( ; i < n; i++)
+    while (i < n)
     {
         dest[i] = '\0';
+        i++;
     }
 
-    return dest;
-
+    return (dest);
 }
 
 //Appends the string pointed to, by src to the end of the string pointed to by dest.
