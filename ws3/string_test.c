@@ -2,7 +2,9 @@
 #include "/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws2/ex5.h"
 #include "/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws2/ex6.h"
 //Copies the string pointed to, by src to dest.
-#include "string.h"
+#include <assert.h> //assert
+
+#include "./string.h"
 
 void TestStrcpy(void);
 void TestStrncpy(void);
@@ -19,7 +21,9 @@ int main()
 {
     //TestStrcpy();
     //TestStrncpy();
-    TestStrchar();
+    //TestStrchar();
+    //TestStrdup();
+    TestStrcasecmp();
     return (0);
 }
 
@@ -33,22 +37,22 @@ void TestStrcpy(void)
     strcpy(str1_dest, str1_src);
     strcpy(str2_dest, str2_src);
 
-    printf("Test 1: strcpy\n\n");
+   
 
     if(strcmp(str1_src, str1_dest) == 0)
     {
-        printf("src:\"%s\" is copied to dest:\"%s \n", str1_src, str1_dest);
+        printf("Test 1 strcpy PASSED: src:\"%s\" was copied to dest:\"%s \n", str1_src, str1_dest);
     }
     else{
-        printf("serc:\"%s\" did not copied to dest\"%s\" \n", str1_src, str1_dest);
+        printf("Test case 1 strcpy FAILED!!!");
     }
 
     if(strcmp(str2_src, str2_dest) == 0)
     {
-        printf("src:\"%s\" is copied to dest:\"%s \n", str2_src, str2_dest);
+        printf("Test 2 strcpy PASSED: src:\"%s\" is copied to dest:\"%s \n", str2_src, str2_dest);
     }
     else{
-        printf("src:\"%s\" did not copied to dest\"%s\" \n", str2_src, str2_dest);
+        printf("Test case 2 strcpy FAILED!!!");
     }
 
 }
@@ -63,34 +67,30 @@ void TestStrncpy(void)
     strncpy(str3_dest, str3_src, 5);
     strncpy(str4_dest, str4_src, 20);
 
-    printf("Test 2: strncpy\n\n");
 
     if(strlen(str3_dest) == 5)
     {
-        printf("strncpy copied 5 character from src: \"%s\"to dest:\"%s\"\n", str3_src, str3_dest);
+        printf("Test case 1 strncpy PASSED: copied 5 character from src: \"%s\"to dest:\"%s\"\n", str3_src, str3_dest);
     }
     else
     {
-        printf("strncpy did not success,only copied %lu character : \"%s\"\n", strlen(str3_dest), str3_dest);
+        printf("Test case 1 strncpy FALIED!!!");
     }
 
     if(strlen(str4_dest) == 14)
     {
-        printf("strncpy copied 14 character fron \"%s\" to dest:\"%s\"\n", str4_src, str4_dest);
+        printf("Test case 2 strncpy PASSED: copied 14 character fron \"%s\" to dest:\"%s\"\n", str4_src, str4_dest);
     }
     else
     {
-        printf("strncpy did not success,only copied %lu  character : \"%s\"\n", strlen(str4_dest), str4_dest);
+        printf("Test case 2 strncpy FALIED!!!");
     }
 }
 
 void TestStrcasecmp(void)
 {
-    printf("Test 3: strcasecmp\n\n");
-    
-
-    char str_case1[] = "Hello World!";
-    char str_case2[] = "hELLO wORLD!";
+    char str_case1[] = "Hello World";
+    char str_case2[] = "hELLO wORLD";
     char str_case3[] = "string";
     char str_case4[] = "STRING";
     char str_case5[] = "abc";
@@ -98,29 +98,29 @@ void TestStrcasecmp(void)
 
     if(strcasecmp(str_case1, str_case2) == 0)
     {
-        printf("\"%s is equel to \"%s\"\n", str_case1, str_case2);
+        printf("Test case 1 strcasecmp PASSED:\"%s is equel to \"%s\"\n", str_case1, str_case2);
     }
     else
     {
-        printf("\"%s is not equel to \"%s\"\n", str_case1, str_case2);
+        printf("Test case 1 strcasecmp FAILED!!!\n");
     }
 
     if(strcasecmp(str_case3, str_case4) == 0)
     {
-        printf("\"%s is equel to \"%s\"\n", str_case3, str_case4);
+        printf("Test case 2 strcasecmp PASSED:\"%s is equel to \"%s\"\n", str_case3, str_case4);
     }
     else
     {
-        printf("\"%s is not equel to \"%s\"\n", str_case3, str_case4);
+        printf("Test case 2 strcasecmp FAILED!!!\n");
     }
 
     if(strcasecmp(str_case5, str_case6) == 'c')
     {
-        printf("\"%s is equel to \"%s\"\n", str_case5, str_case6);
+        printf("Test case 3 strcasecmp PASSED:\"%s is equel to \"%s\"\n", str_case5, str_case6);
     }
     else
     {
-        printf("\"%s is not equel to \"%s\"\n", str_case5, str_case6);
+        printf("Test case 3 strcasecmp FAILED!!!\n");
     }
 }
 
@@ -156,25 +156,28 @@ void TestStrdup(void)
 {
     char* str1_dup = "Hi guys!";
     char* str2_dup = strdup(str1_dup);
-    char* str3_dup = "";
+    char* str3_dup = "Google";
     char* str4_dup = strdup(str3_dup);
+
+    assert(str2_dup != NULL);
+    assert(str4_dup != NULL);
 
     if(strcmp(str1_dup, str2_dup) == 0)
     {
-        printf("\"%s\" is idintical string to \"%s\"\n", str1_dup, str2_dup);
+        printf("Test case 1 strdup PASSED:\"%s\" is idintical string to \"%s\"\n", str1_dup, str2_dup);
     }
     else
     {
-        printf("\"%s\" is not idintical string to \"%s\"\n", str1_dup, str2_dup);
+        printf("Test case 1 strdup FAILED!!!\n");
     }
 
     if(strcmp(str3_dup, str4_dup) == 0)
     {
-        printf("\"%s\" is idintical string to \"%s\"\n", str1_dup, str2_dup);
+        printf("Test case 2 strdup PASSED:\"%s\" is idintical string to \"%s\"\n", str4_dup, str3_dup);
     }
     else
     {
-        printf("\"%s\" is not idintical string to \"%s\"\n", str1_dup, str2_dup);
+        printf("Test case 2 strdup FAILED!!!\n");
     }
     free(str2_dup);
     free(str4_dup);
@@ -239,7 +242,6 @@ void TestStrstr(void)
 
 
 }
-
 
 void TestStrspn(void)
 {

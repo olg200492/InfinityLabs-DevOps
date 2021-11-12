@@ -1,5 +1,8 @@
-#include "string.h"
+#include <stdlib.h> // malloc
+#include "./string.h"
 
+
+int ToLower(char a);
 /*
     Pasudo Code strcpy:
     1. set i = 0, j = 0;
@@ -103,27 +106,57 @@ char *strtok(char *str, const char *delim)
 
 }
 
-//compares string1 and string2 without sensitivity to case. All alphabetic characters in string1 and string2 are converted to lowercase before comparison.
+/*compares string1 and string2 without sensitivity to case. All alphabetic characters in string1 and string2 are converted to lowercase before comparison.
+    1. while *string != NULL AND (ToLower(*string1)- ToLower(*string2)) == 0 
+        1.1 string1++;
+        1.2 string2++;
+    2. return (ToLower(*string1) - ToLower(*string2))
+*/
 int strcasecmp(const char *string1, const char *string2)
 {
-    while (((*string1 - *string2) == (0 || 32 || -32)) && *string1 != '\0' && *string2 != '\0')
+    while ((ToLower(*string1)- ToLower(*string2)) == 0 && *string1 != '\0')
     {   
         string1++;
         string2++;
     
     }
-    if (*string1 - *string2 >=0)
-    {
-
-    }
-    return (*string1 - *string2);  
+    
+    return (ToLower(*string1) - ToLower(*string2)); 
 
 }
 
-//Returns a pointer to a null-terminated byte string, which is a duplicate of the string pointed to by str1. The returned pointer must be passed to free to avoid a memory leak. 
+
+/*
+    Returns a pointer to a null-terminated byte string, which is a duplicate of the string pointed to by str1. The returned pointer must be passed to free to avoid a memory leak. 
+    1. set char * str = NULL
+    2. allocate memory for str with malloc, size = strlen(str1)+1
+    3. if str == null
+        3.1. retun NULL
+    4. char *temp = str;
+    5. while *str1 != NULL
+        5.1. *str = *str1
+        5.2 str++ , str1++
+    6. *str = '\0'
+    7. return temp
+*/
 char * strdup( const char *str1 )
 {
-
+    char *str = (char*)malloc(strlen(str1)+1);
+    if (str == NULL)
+    {
+       return (NULL);
+    }
+    
+    char *temp = str;
+    while (*str1 != '\0')
+        {
+            *str = *str1;
+            str++;
+            str1++;
+        }
+    *str = '\0';
+    return (temp);       
+    
 }
 
 //Function computes the length of the string str up to, but not including the terminating null character.
@@ -171,6 +204,16 @@ int strcmp(const char *str1, const char *str2)
     }
 
     return (*str1 - *str2);    
+}
+
+int ToLower(char a)
+{
+    if (a >= 'A' && a <= 'Z')
+    {
+        return (a + 32);
+    }
+    
+    return (a);
 }
 
 
