@@ -136,18 +136,18 @@ void TestStrchar(void)
 
     if(ret1 != NULL)
     {
-        printf("%c first occurre in %s start in %s\n", ch1, str1, ret1);
+        printf("Test case 1 strchr PASSED:'%c' does occurre in \"%s\"\n", *ret1, str1);
     }
     else{
-        printf("%c does not occurre in %s s\n", ch1, str1);
+        printf("Test case 1 FAILED!!!\n");
     }
 
-     if(ret2 != NULL)
+     if(ret2 == NULL)
     {
-        printf("%c first occurre in %s start in %s\n", ch2, str2, ret2);
+        printf("Test case 2 strchr PASSED:'%c' does not occurre in \"%s\"\n", ch2, str2);
     }
     else{
-        printf("%c  does not occurre in %s\n", ch2, str2);
+        printf("Test case 1 FAILED!!!\n");
     }
 
 }
