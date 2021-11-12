@@ -23,7 +23,8 @@ int main()
     //TestStrncpy();
     //TestStrchar();
     //TestStrdup();
-    TestStrcasecmp();
+    //TestStrcasecmp();
+    TestStrncat();
     return (0);
 }
 
@@ -188,26 +189,92 @@ void TestStrdup(void)
 void TestStrcat(void)
 {
 
-    char dest[50] = "This is an";
-    char src[50] = " example";
+    char dest1[50] = "abc";
+    char src1[50] = "def";
 
-    printf("Befor strcat:\n");
-    printf("%s\n",dest);
-    strcat(dest, src);
+    char dest2[50] = "";
+    char src2[50] = "Hello";
+
+    char dest3[50] = "Google!";
+    char src3[50] = "";
+
+    printf("Before strcat:\n");
+    printf("dest1[] = \"%s\", src1[] = \"%s\"\n", dest1, src1);
+    strcat(dest1, src1);
     printf("After strcat:\n");
-    printf("%s\n",dest);
+
+    if(strlen(dest1) == 6)
+    {
+        printf("Test case 1 PASSED: dest1[] = \"%s\"\n\n", dest1);
+    }
+    else{
+        printf("Test case 1 strcat FAILED!!!.\n\n");
+    }
+
+    printf("Before strcat:\n");
+    printf("dest2[] = \"%s\", src2[] = \"%s\"\n", dest2, src2);
+    strcat(dest2, src2);
+    printf("After strcat:\n");
+
+    if(strlen(dest2) == 5)
+    {
+        printf("Test case 2 PASSED: dest2[] = \"%s\"\n\n", dest2);
+    }
+    else{
+        printf("Test case 2 strcat FAILED!!!.\n\n");
+    }
+
+    printf("Before strcat:\n");
+    printf("dest3[] = \"%s\", src3[] = \"%s\"\n", dest3, src3);
+    strcat(dest3, src3);
+    printf("After strcat:\n");
+
+    if(strlen(dest3) == 7)
+    {
+        printf("Test case 3 PASSED: dest3[] = \"%s\"\n\n", dest3);
+    }
+    else{
+        printf("Test case 3 strcat FAILED!!!.\n\n");
+    }
+
+    
 }
 
 void TestStrncat(void)
 {
-    char dest1[25] = "This is an example";
-    char src1[50] = " to show working of strncat() this is not added";
+    char dest1[25] = "abc";
+    char src1[50] = "defg";
 
-    printf("Befor strncat:\n");
-    printf("%s\n",dest1);
-    strcat(dest1, src1);
+    char dest2[25] = "123";
+    char src2[50] = "4567";
+
+    printf("Before strncat:\n");
+    printf("dest1[] = \"%s\", src1[] = \"%s\"\n", dest1, src1);
+    strncat(dest1, src1, 3);
     printf("After strncat:\n");
-    printf("%s\n",dest1);
+
+    if(strlen(dest1) == 6)
+    {
+        printf("Test case 1 PASSED: dest1[] + 3 byets from strc1[] = \"%s\"\n\n", dest1);
+    }
+    else
+    {
+        printf("Test case 1 FAILED!!!\n");
+    }
+
+    printf("Before strncat:\n");
+    printf("dest2[] = \"%s\", src2[] = \"%s\"\n", dest2, src2);
+    strncat(dest2, src2, 10);
+    printf("After strncat:\n");
+
+    if(strlen(dest2) == 7)
+    {
+        printf("Test case 2 PASSED: dest2[] + 10 byets from strc2[] = \"%s\"\n\n", dest2);
+    }
+    else
+    {
+        printf("Test case 2 FAILED!!!\n");
+    }
 }
 
 void TestStrstr(void)

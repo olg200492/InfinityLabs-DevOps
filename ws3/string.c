@@ -53,15 +53,50 @@ char *strncpy(char *dest, const char *src, size_t n)
     return (dest);
 }
 
-//Appends the string pointed to, by src to the end of the string pointed to by dest.
+/*Appends the string pointed to, by src to the end of the string pointed to by dest.
+    1. set char *temp = dest +str(dest)
+    2. while *src != '\0
+        2.1 *temp = *src
+        2.2 temp++;
+        2.3 src++;
+    3. *temp = '\0'
+    4. return dest
+*/
 char *strcat(char *dest, const char *src)
 {
-
+    char *temp = dest + (strlen(dest));
+    while (*src != '\0')
+    {
+        *temp = *src;
+        temp++;
+        src++;
+    }
+    *temp = '\0';
+    return (dest);
 }
 
-//Appends the string pointed to, by src to the end of the string pointed to, by dest up to n characters long.
+/*Appends the string pointed to, by src to the end of the string pointed to, by dest up to n characters long.
+    1. set char *temp = dest +strlen(dest)
+    2. while *src != '\0' AND n > o
+        2.1 *temp = *src
+        2.2 temp++
+        2.3 src++
+        2.4 n--
+    3. *temp = '\0'
+    4. return dest
+*/
 char *strncat(char *dest, const char *src, size_t n)
 {
+    char *temp = dest + strlen(dest);
+    while (*src != '\0' && n>0)
+    {
+        *temp = *src;
+        temp++;
+        src++;
+        n--;
+    }
+    *temp = '\0';
+    return (dest);
 
 }
 
@@ -76,7 +111,7 @@ char *strncat(char *dest, const char *src, size_t n)
 */
 char *strchr(const char *str, int c)
 {
-    char *temp = str;
+    char *temp = (char *)str;
     while (*temp != '\0')
     {
         if (*temp == c)
