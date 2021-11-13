@@ -25,7 +25,8 @@ int main()
     //TestStrdup();
     //TestStrcasecmp();
     //TestStrncat();
-    TestStrstr();
+    //TestStrstr();
+    TestStrspn();
     return (0);
 }
 
@@ -328,47 +329,47 @@ void TestStrspn(void)
 
     if (len1 == 3)
     {
-        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str1, len1, str2);
+        printf("Test case 1 strspn PASSED: in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str1, len1, str2);
     }
     else
     {
-        printf("returned invalid output for strspn(%s , %s)\n", str1, str2);
+        printf("Test case 1 strspn FAILED!!!: returned invalid output for strspn(%s , %s)\n", str1, str2);
     }
 
     if (len2 == 4)
     {
-        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str2, len2, str2);
+        printf("Test case 2 strspn PASSED: in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str2, len2, str2);
     }
     else
     {
-        printf("returned invalid output for strspn(%s , %s)\n", str2, str2);
+        printf("Test case 2 strspn FAILED!!!: returned invalid output for strspn(%s , %s)\n", str2, str2);
     }
 
     if (len3 == 0)
     {
-        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str3, len3, str2);
+        printf("Test case 3 strspn PASSED: in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str3, len3, str2);
     }
     else
     {
-        printf("returned invalid output for strspn(%s , %s)\n", str3, str2);
+        printf("Test case 3 strspn FAILED!!!: returned invalid output for strspn(%s , %s)\n", str3, str2);
     }
 
     if (len4 == 0)
     {
-        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str4, len4, str2);
+        printf("Test case 4 strspn PASSED: in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str4, len4, str2);
     }
     else
     {
-        printf("returned invalid output for strspn(%s , %s)\n", str4, str2);
+        printf("Test case 4 strspn FAILED!!!: returned invalid output for strspn(%s , %s)\n", str4, str2);
     }
 
     if (len5 == 8)
     {
-        printf("in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str5, len5, str2);
+        printf("Test case 5 strspn PASSED: in \"%s\" there is %lu segment consist entirely of characther from \"%s\"\n", str5, len5, str2);
     }
     else
     {
-        printf("returned invalid output for strspn(%s , %s)\n", str5, str2);
+        printf("Test case 5t strspn FAILED!!!: returned invalid output for strspn(%s , %s)\n", str5, str2);
     }
 
 

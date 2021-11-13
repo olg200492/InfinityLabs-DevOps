@@ -123,10 +123,27 @@ char *strchr(const char *str, int c)
     return (NULL);
 }
 
-//Calculates the length of the initial segment of str1 which consists entirely of characters in str2.
-size_t strspn(const char *str1, const char *str2)
-{
+/*Calculates the length of the initial segment of str1 which consists entirely of characters in str2.
+    1. set size_t size = 0
+    2. while *str1 != '\0'
+        2.1 if strchr(str2, *str1)
+            2.1.2 size++
+        2.2 str1++
+    3. retur size_t
 
+*/
+size_t strspn(const char *str1, const char *str2)
+{   
+    size_t size = 0;
+    while (*str1 != '\0')
+    {
+        if (strchr(str2, *str1) != NULL)
+        {
+            size++;
+        }
+        str1++;
+    }
+    return (size);
 }
 
 /*Finds the first occurrence of the entire string needle (not including the terminating null character) which appears in the string haystack.
