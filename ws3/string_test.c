@@ -24,7 +24,8 @@ int main()
     //TestStrchar();
     //TestStrdup();
     //TestStrcasecmp();
-    TestStrncat();
+    //TestStrncat();
+    TestStrstr();
     return (0);
 }
 
@@ -279,7 +280,7 @@ void TestStrncat(void)
 
 void TestStrstr(void)
 {
-    const char haystack1[] = "TutorialsPoint";
+    const char haystack1[] = "TutorialsPointIsGreat";
     const char needle1[] = "Point";
 
     const char haystack2[] = "Google Buy Bob";
@@ -289,22 +290,23 @@ void TestStrstr(void)
     char *ret1 = strstr(haystack1, needle1);
     char *ret2 = strstr(haystack2, needle2);
 
-    if (ret2 != NULL)
+    if (ret1 == NULL)
     {
-        printf("strstr did found needle = \"%s\" in haystack = \"%s\"\n\n", needle1, haystack1);
+        printf("Test case 1 satrstr  FAILED!!!: should return pointer to needle = \"%s\" in haystack = \"%s\"\n", needle1, haystack1);
+        
     }
     else
     {
-        printf("strstr did not found needle = \"%s\" in haystack = \"%s\"\n\n", needle1, haystack1);
+        printf("Test case 1 strstr PASSED: did found needle = \"%s\" in haystack = \"%s\", returned: \"%s\"\n\n", needle1, haystack1, ret1);
     }
 
-    if (ret2 != NULL)
+    if (ret2 == NULL)
     {
-        printf("strstr did found needle = \"%s\" in haystack = \"%s\"\n\n", needle1, haystack1);
+        printf("Test case 2 strstr PASSED: did not found needle = \"%s\" in haystack = \"%s\"\n\n", needle2, haystack2);
     }
     else
     {
-        printf("strstr did not found needle = \"%s\" in haystack = \"%s\"\n\n", needle1, haystack1);
+        printf("Test case 2 satrstr  FAILED!!!\n");
     }
 
 

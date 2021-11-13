@@ -129,9 +129,51 @@ size_t strspn(const char *str1, const char *str2)
 
 }
 
-//Finds the first occurrence of the entire string needle (not including the terminating null character) which appears in the string haystack.
+/*Finds the first occurrence of the entire string needle (not including the terminating null character) which appears in the string haystack.
+    1. set int i = 0, j = o ,TempIndex
+    2. set const char * TempPointer = NULL
+
+    3. for i < strlen(haystack)
+        3.1 if haystack[i] == needle[j]
+            3.1.1 TempPointer = &haystack[i]
+            3.1.2 TempIndex = i
+            3.1.3 while haystack[i] == needle[j]
+                3.1.3.1 i++
+                3.1.3.2 j++
+            3.1.4 if j == strlen(neddle)
+                3.1.4.1 return (TempPointer)
+            3.1.4 i = TempIndex
+            3.1.5 j = 0
+    4. return (NULL)
+*/
 char *strstr(const char *haystack, const char *needle)
 {
+    int i = 0;
+    int j = 0;
+    int TempIndex = 0;
+    char * TempPointer = NULL;
+
+
+    for ( i = 0; i < strlen(haystack); i++)
+    {
+        if (haystack[i] == needle[j])
+        {
+            TempPointer = (char *)&haystack[i];
+            TempIndex = i;
+            while (haystack[i] == needle[j] && needle[j] != '\0')
+            {
+                i++;
+                j++;
+            }
+            if (j == (strlen(needle)))
+            {
+                return (TempPointer);
+            }
+            i = TempIndex;
+            j = 0;
+        }
+    }
+    return (NULL);
 
 }
 
