@@ -41,7 +41,11 @@ int IsPali(char* str)
 void Boom7(int start, int end)
 {   
     
-    assert(start <= end);
+    if (start > end)
+    {
+        printf("Error:Invalit inputs\n");
+        return;
+    }
     int flag = 0;
     int TempNumber = 0;
     
@@ -72,13 +76,14 @@ void Boom7(int start, int end)
 
         if( flag == 0)
         {
-            printf("%d\n", start);
+            printf("%d ", start);
         }
         else
         {
-            printf("BOOM\n");
+            printf("BOOM ");
         }
     }
+    printf("\n");
 
 }
 //delete all the duplicate space-chars of a given string. Delete space-cahrs in the end/begginning of the strings if exists.

@@ -7,7 +7,8 @@ void TestBoom7(void);
 void TestDelSpace(void);
 int main()
 {
-    TestIsPali();
+    //TestIsPali();
+    TestBoom7();
     return (0);
 }
 
@@ -76,21 +77,21 @@ void TestBoom7(void)
     int start3 = 0, end3 = 0;
     int start4 = 10, end4 = -6;
     
-    printf("Test 6:\n");
-    printf("Range 0 - 7 should print:\n0, 1, 2, 3, 4, 5, 6, BOOM\n\n");
+    printf("Test case 1 Bomm7:\n");
+    printf("Range 0 - 7 should print:\n0 1 2 3 4 5 6 BOOM\n\n");
     Boom7(start1, end1);
 
-    printf("Test 7:\n");
-    printf("Range 14 - 21 should print:\nBOOM, 15, 16, 17, 18, 19, 20, BOOM\n\n");
+    printf("Test case 2 Bomm7:\n");
+    printf("Range 14 - 21 should print:\nBOOM 15 16 BOOOM 18 19 20 BOOM\n\n");
     Boom7(start2, end2);
 
-    printf("Test 8:\n");
+    printf("Test case 2 Bomm7:\n");
     printf("Range 0 - 0 should print:\n0\n\n");
     Boom7(start3, end3);
 
-    printf("Test 9:\n");
-    printf("Range 10 - (-6) should print:\n Error:Invalit input\n\n");
-    //Boom7(start4, end4);
+    printf("Test case 3 Bomm7:\n");
+    printf("Range 10 - (-6) should print:\nError:Invalit inputs\n\n");
+    Boom7(start4, end4);
 }
 
 void TestDelSpace(void)
