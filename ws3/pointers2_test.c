@@ -2,25 +2,75 @@
 #include <string.h> /*strcmp */
 #include "pointers2.h"	
 
+void TestIsPali(void);
+void TestBoom7(void);
+void TestDelSpace(void);
 int main()
 {
-   // IsPali test case:
+    TestIsPali();
+    return (0);
+}
+
+void TestIsPali(void)
+{
+    // IsPali test case:
     char str1[] = "abba";
     char str2[] = "aba";
     char str3[] = "121";
     char str4[] = "akl";
     char str5[] = "1k";
    
-    
-    printf("Test 1: %s is a plindrom and IsPali should return 1: %d\n", str1, IsPali(str1));
-    printf("Test 2: %s is a plindrom and IsPali should return 1: %d\n", str2, IsPali(str2));
-    printf("Test 3: %s is a plindrom and IsPali should return 1: %d\n", str3, IsPali(str3));
-    printf("Test 4: %s is not a plindrom and IsPali should return 0: %d\n", str4, IsPali(str4));
-    printf("Test 5: %s is not a plindrom and IsPali should return 0: %d\n", str5, IsPali(str5));
+    if(IsPali(str1) == 1)
+    {
+        printf("Test case 1 IsPali PASSED: \"%s\" is a palindrom\n", str1);
+    }
+    else
+    {
+        printf("Test case 1 IsPali FAILED!!!: \"%s\" is a palindrom, returned value is: %d\n", str1, IsPali(str1));
+    }
 
-    /*******************************************************************************************/
+    if(IsPali(str2) == 1)
+    {
+        printf("Test case 2 IsPali PASSED: \"%s\" is a palindrom\n", str2);
+    }
+    else
+    {
+        printf("Test case 2 IsPali FAILED!!!: \"%s\" is a palindrom, returned value is: %d\n", str2, IsPali(str2));
+    }
+
+    if(IsPali(str3) == 1)
+    {
+        printf("Test case 3 IsPali PASSED: \"%s\" is a palindrom\n", str3);
+    }
+    else
+    {
+        printf("Test case 3 IsPali FAILED!!!: \"%s\" is a palindrom, returned value is: %d\n", str3, IsPali(str3));
+    }
+
+    if(IsPali(str4) == 0)
+    {
+        printf("Test case 4 IsPali PASSED: \"%s\" is not a palindrom\n", str4);
+    }
+    else
+    {
+        printf("Test case 4 IsPali FAILED!!!: \"%s\" is not a palindrom, returned value is: %d\n", str4, IsPali(str4));
+    }
     
-    // Boom7 test case:
+    if(IsPali(str5) == 0)
+    {
+        printf("Test case 5 IsPali PASSED: \"%s\" is not a palindrom\n", str5);
+    }
+    else
+    {
+        printf("Test case 5 IsPali FAILED!!!: \"%s\" is not a palindrom, returned value is: %d\n", str5, IsPali(str5));
+    }
+    
+    
+}
+
+void TestBoom7(void)
+{
+     // Boom7 test case:
     int start1 = 0, end1 = 7;
     int start2 = 14, end2 = 21;
     int start3 = 0, end3 = 0;
@@ -41,11 +91,10 @@ int main()
     printf("Test 9:\n");
     printf("Range 10 - (-6) should print:\n Error:Invalit input\n\n");
     //Boom7(start4, end4);
-    
+}
 
-    /*******************************************************************************************/
-
-    /* test case for DelSpace */
+void TestDelSpace(void)
+{
     char string1BeforeDelSpace[] = " and ";
     char string1AfterDelSpace[] = "and";
     char string2BeforeDelSpace[] = "andI buy Milk";
@@ -107,5 +156,4 @@ int main()
     }
 
     
-    return (0);
 }

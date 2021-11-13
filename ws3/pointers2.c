@@ -17,8 +17,6 @@
 */
 int IsPali(char* str)
 {
-    assert(isalpha(str[0]) || isdigit(str[0]));
-
     int i = 0;
     int StrLen = strlen(str);
 
