@@ -20,14 +20,14 @@ void TestStrtok(void);
 int main()
 {
     //TestStrcpy();
-    //TestStrncpy();
+    TestStrncpy();
     //TestStrchar();
     //TestStrdup();
     //TestStrcasecmp();
     //TestStrncat();
     //TestStrstr();
     //TestStrspn();
-    TestStrtok();
+    //TestStrtok();
 
     return (0);
 }
@@ -69,8 +69,12 @@ void TestStrncpy(void)
     char str4_src[] = "Google buy Bob";
     char str4_dest[50];
 
+    char str5_src[] = "Google buy Bob";
+    char str5_dest[5];
+
     strncpy(str3_dest, str3_src, 5);
     strncpy(str4_dest, str4_src, 20);
+    strncpy(str5_dest, str5_src, 10);
 
 
     if(strlen(str3_dest) == 5)
@@ -89,6 +93,15 @@ void TestStrncpy(void)
     else
     {
         printf("Test case 2 strncpy FALIED!!!");
+    }
+
+    if(strlen(str5_dest) == 5)
+    {
+        printf("Test case 3 strncpy PASSED: copied 5 character fron \"%s\" to dest:\"%s\"\n", str5_src, str5_dest);
+    }
+    else
+    {
+        printf("Test case 3 strncpy FALIED!!! %s\n",str5_dest);
     }
 }
 

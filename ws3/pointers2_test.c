@@ -7,9 +7,9 @@ void TestBoom7(void);
 void TestDelSpace(void);
 int main()
 {
-    //TestIsPali();
+    TestIsPali();
     //TestBoom7();
-    TestDelSpace();
+    //TestDelSpace();
     return (0);
 }
 

@@ -16,6 +16,7 @@ int ToLower(char a);
 char *strcpy(char *dest, const char *src)
 {
     int i = 0, j = 0;
+
     while (src[i] != '\0')
     {
         dest[j] = src[i];
@@ -39,18 +40,15 @@ char *strcpy(char *dest, const char *src)
 char *strncpy(char *dest, const char *src, size_t n)
 {
     size_t i = 0;
-
-    for (i = 0; i < n && src[i] != '\0'; i++)
+    int j = 0;
+    for (i = 0, j = 0; j < n && j < (strlen(src) +1 ); j++, i++)
     {
-        dest[i] = src[i];
+        dest[j] = src[j];
     }
-    while (i < n)
-    {
-        dest[i] = '\0';
-        i++;
-    }
+    
 
     return (dest);
+
 }
 
 /*Appends the string pointed to, by src to the end of the string pointed to by dest.
@@ -65,11 +63,14 @@ char *strncpy(char *dest, const char *src, size_t n)
 char *strcat(char *dest, const char *src)
 {
     char *temp = dest + (strlen(dest));
-    while (*src != '\0')
+    int size = strlen(src);
+    int i = 0;
+    while (i < size)
     {
         *temp = *src;
         temp++;
         src++;
+        i++;
     }
     *temp = '\0';
     return (dest);
