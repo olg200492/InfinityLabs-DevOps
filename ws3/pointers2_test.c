@@ -8,7 +8,8 @@ void TestDelSpace(void);
 int main()
 {
     //TestIsPali();
-    TestBoom7();
+    //TestBoom7();
+    TestDelSpace();
     return (0);
 }
 
@@ -105,55 +106,52 @@ void TestDelSpace(void)
     char string4BeforeDelSpace[] = "";
     char string4AfterDelSpace[] = "";
 
-    
+    printf("Before DelSpace, string is: \"%s\"\n", string1BeforeDelSpace);
     DelSpace(string1BeforeDelSpace);
-    DelSpace(string2BeforeDelSpace);
-    DelSpace(string3BeforeDelSpace);
-    DelSpace(string4BeforeDelSpace);
-
-    printf("Test 10:\n\n");
-    
     if(strcmp(string1BeforeDelSpace, string1AfterDelSpace) == 0)
     {
-        printf("\"%s\" is equel to \"%s\"\n", string1BeforeDelSpace, string1AfterDelSpace);
+        printf("Test case 1 DelSpace PASSED: outcome is \"%s\"\n\n", string1AfterDelSpace);
     }
     else
     {
-        printf("\"%s\" is not equel to \"%s\"\n", string1BeforeDelSpace, string1AfterDelSpace);
+        printf("Test case 1 DelSpace FAILED!!!: outcome is\"%s\"\n\n", string1AfterDelSpace);
     }
 
-    printf("Test 11:\n\n");
     
+    printf("Before DelSpace, string is: \"%s\"\n", string2BeforeDelSpace);
+    DelSpace(string2BeforeDelSpace);
     if(strcmp(string2BeforeDelSpace, string2AfterDelSpace) == 0)
     {
-        printf("\"%s\" is equel to \"%s\"\n", string2BeforeDelSpace, string2AfterDelSpace);
+        printf("Test case 2 DelSpace PASSED: outcome is \"%s\"\n\n", string2AfterDelSpace);
     }
     else
     {
-        printf("\"%s\" is not equel to \"%s\"\n", string2BeforeDelSpace, string2AfterDelSpace);
+        printf("Test case 2 DelSpace FAILED!!!: outcome is \"%s\"\n\n", string2AfterDelSpace);
     }
 
 
-    printf("Test 12:\n\n");
-
+    
+    printf("Before DelSpace, string is: \"%s\"\n", string3BeforeDelSpace);
+    DelSpace(string3BeforeDelSpace);
     if(strcmp(string3BeforeDelSpace, string3AfterDelSpace) == 0)
     {
-        printf("\"%s\" is equel to \"%s\"\n", string3BeforeDelSpace, string3AfterDelSpace);
+        printf("Test case 3 DelSpace PASSED: outcome is \"%s\"\n\n", string3AfterDelSpace);
     }
     else
     {
-        printf("\"%s\" is not equel to \"%s\"\n", string3BeforeDelSpace, string3AfterDelSpace);
+        printf("Test case 3 DelSpace FAILED!!!: outcome is \"%s\"\n\n", string3AfterDelSpace);
     }
 
-    printf("Test 13:\n\n");
-   
+    
+    printf("Before DelSpace, string is: \"%s\"\n", string4BeforeDelSpace);
+    DelSpace(string4BeforeDelSpace);
     if(strcmp(string4BeforeDelSpace, string4AfterDelSpace) == 0)
     {
-        printf("\"%s\" is equel to \"%s\"\n", string4BeforeDelSpace, string4AfterDelSpace);
+        printf("Test case 4 DelSpace PASSED: outcome is \"%s\"\n\n", string4AfterDelSpace);
     }
     else
     {
-        printf("\"%s\" is not equel to \"%s\"\n", string4BeforeDelSpace, string4AfterDelSpace);
+        printf("Test case 4 DelSpace FAILED!!!: outcome is \"%s\"\n\n", string4AfterDelSpace);
     }
 
     

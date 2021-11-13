@@ -86,29 +86,65 @@ void Boom7(int start, int end)
     printf("\n");
 
 }
-//delete all the duplicate space-chars of a given string. Delete space-cahrs in the end/begginning of the strings if exists.
+/*delete all the duplicate space-chars of a given string. Delete space-cahrs in the end/begginning of the strings if exists.
+    1. set temp char array of size str + 1
+    2. set i = 0, j = 0;
+    3. while str[i] equel SPACE or TAB
+        3.1 i++
+    4. while i < strlen(str)
+        4.1 if str[i] equel SPACE or TAB
+            4.1.1 temp[j] = ' '
+            4.1.2 i++
+            4.1.3 j++
+            4.1.4 while str[i] equel SPACE or TAB
+                4.1.4.1 i++
+        4.2 else 
+            4.2.1 temp[j] = str[i]
+            4.2.2 j++
+            4.2.3 i++
+
+    5. set temp[j] = '\0'
+    6. if temp[j-1] == ' '
+        6.1 temp[j-1] ='\0'
+    7. strcpy(str, temp)
+*/
 void DelSpace(char* str)
 {
-    int i = 0, j = 0;
+    int i = 0;
+    int j = 0;
     int StrLen = strlen(str);
+    char temp[StrLen+1];
 
-    for(i = 0; i < StrLen; i++)
+    while(str[i] == 9 || str[i] == 32)
     {
-        if(str[i] == 10 || str[i] == 11)
+        i++;
+    }
+
+    while( i < StrLen)
+    {
+        if( str[i] == 9 || str[i] == 32)
         {
-            str[j] = ' ';
+            temp[j] = ' ';
             j++;
-            while( str[i] == 10 || str[i] == 11)
+            i++;
+            while(str[i] == 9 || str[i] == 32)
             {
                 i++;
             }
         }
         else
         {
-            str[j] = str[i];
+            temp[j] = str[i];
             j++;
+            i++;
         }
     }
 
+    temp[j] = '\0';
+    if (temp[j-1] == ' ')
+    {
+        temp[j-1] = '\0';
+    }
+    strcpy(str, temp);
 }
 
