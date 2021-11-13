@@ -26,7 +26,9 @@ int main()
     //TestStrcasecmp();
     //TestStrncat();
     //TestStrstr();
-    TestStrspn();
+    //TestStrspn();
+    TestStrtok();
+
     return (0);
 }
 
@@ -377,17 +379,128 @@ void TestStrspn(void)
 
 void TestStrtok(void)
 {
-    char str[] = "This is - www.tutorialspoint.com - website";
+    char str[] = "This is-Google.com-website";
     char delim[] = "-";
 
-  
+    char str1[] = "Lets-BUY,MANGO";
+    char delim1[] = "-,";
+
+    char str2[] = "Cake, Chocolate, Milk";
+    char delim2[] = "-";
+
+    printf("Before tokanize the string is \"%s\" and delim is: '%s'\n\n", str, delim);
     char *token = strtok(str, delim);
-   
-    printf("Before tokanize the string is %s and token is: %s\n\n", str, delim);
-    while ( token != NULL ) 
+    
+    if(strcmp("This is", token) == 0)
     {
-        printf( " %s\n", token );    
-        token = strtok(NULL, delim);
-   }
+        printf("Test case 1 strtok PASSED: token equel to \"%s\"\n", token);
+    }
+    else
+    {
+        printf("Test case 1 strtok FAILED!!!:token equel to \"%s\"\n", token);
+    }
+    
+    free(token);
+    token = NULL;
+
+    token = strtok(NULL, delim);
+    if(strcmp("Google.com", token) == 0)
+    {
+        printf("Test case 2 strtok PASSED: token equel to \"%s\"\n", token);
+    }
+    else
+    {
+        printf("Test case 2 strtok FAILED!!!:token equel to \"%s\"\n", token);
+    }
+    free(token);
+    token = NULL;
+
+    token = strtok(NULL, delim);
+    if(strcmp("website", token) == 0)
+    {
+        printf("Test case 3 strtok PASSED: token equel to \"%s\"\n", token);
+    }
+    else
+    {
+        printf("Test case 3 strtok FAILED!!!:token equel to \"%s\"\n", token);
+    }
+
+    free(token);
+    token = NULL;
+
+    token = strtok(NULL, delim);
+    if(token == NULL)
+    {
+        printf("Test case 4 strtok PASSED: token equel to \"%s\"\n\n", token);
+    }
+    else
+    {
+        printf("Test case 4 strtok FAILED!!!:token equel to \"%s\"\n\n", token);
+    }
+
+    /***************************************************************/
+    printf("Before tokanize the string is \"%s\" and delim is: '%s'\n\n", str1, delim1);
+    token = strtok(str1, delim1);
+    
+    if(strcmp("Lets", token) == 0)
+    {
+        printf("Test case 5 strtok PASSED: token equel to \"%s\"\n", token);
+    }
+    else
+    {
+        printf("Test case 5 strtok FAILED!!!:token equel to \"%s\"\n", token);
+    }
+    
+    free(token);
+    token = NULL;
+
+    token = strtok(NULL, delim1);
+    if(strcmp("BUY", token) == 0)
+    {
+        printf("Test case 6 strtok PASSED: token equel to \"%s\"\n", token);
+    }
+    else
+    {
+        printf("Test case 6 strtok FAILED!!!:token equel to \"%s\"\n", token);
+    }
+    free(token);
+    token = NULL;
+
+    token = strtok(NULL, delim1);
+    if(strcmp("MANGO", token) == 0)
+    {
+        printf("Test case 7 strtok PASSED: token equel to \"%s\"\n", token);
+    }
+    else
+    {
+        printf("Test case 7 strtok FAILED!!!:token equel to \"%s\"\n", token);
+    }
+
+    free(token);
+    token = NULL;
+
+    token = strtok(NULL, delim1);
+    if(token == NULL)
+    {
+        printf("Test case 8 strtok PASSED: token equel to \"%s\"\n\n", token);
+    }
+    else
+    {
+        printf("Test case 8 strtok FAILED!!!:token equel to \"%s\"\n\n", token);
+    }
+
+    /****************************************/
+
+    printf("Before tokanize the string is \"%s\" and delim is: '%s'\n\n", str2, delim2);
+    token = strtok(str2, delim2);
+    if(token == NULL)
+    {
+        printf("Test case 9 strtok PASSED: token equel to \"%s\"\n", token);
+    }
+    else
+    {
+        printf("Test case 9 strtok FAILED!!!:token equel to \"%s\"\n", token);
+    }
+   
 }
 

@@ -194,9 +194,83 @@ char *strstr(const char *haystack, const char *needle)
 
 }
 
-//Breaks string str into a series of tokens separated by delim.
+/*Breaks string str into a series of tokens separated by delim.
+    1. if str != null
+        1.2 set static varibles:
+            static char *string = str
+            static int index = 0
+            
+    Itirate on delim[i]:
+        if delim[i] in string
+
+*/
 char *strtok(char *str, const char *delim)
 {
+    static char *string;
+    static int index;
+    static int size;
+    static char *EndString;
+    int i = 0;
+    char *PointerDelim = NULL;
+    char *Token = NULL;
+    char *TempToken = NULL;
+    if(str != NULL)
+    {
+        string = str;
+        index = 0;
+        size = strlen(str);
+        EndString = str + size;
+    }
+    if (string  == EndString)
+    {
+        return (NULL);
+    }
+    for ( i = 0; i < strlen(delim); i++)
+    {
+        PointerDelim = strchr(string, delim[i]);
+        if (PointerDelim != NULL)
+        {
+            break;
+        }
+    }
+    if(PointerDelim == NULL)
+    {
+        if(*string != '\0' && index != 0)
+        {
+            PointerDelim = string + (size - index);
+        }
+        else
+        {
+            return (NULL);
+        }
+        
+    }
+    Token = (char *)malloc(sizeof(PointerDelim - string));
+    if(Token == NULL)
+    {
+        printf("ERROR allocation memory in malloc.\n");
+        exit(0);
+    }
+    else
+    {
+        TempToken = Token;
+        while(string != PointerDelim)
+        {
+            *Token = *string;
+            Token++;
+            string++;
+            index++;
+        }
+        if( string != EndString)
+        {
+            *string = '\0';
+            string++;
+            index++;
+        }
+        
+        *Token = '\0';
+        return (TempToken);
+    }
 
 }
 
