@@ -145,7 +145,7 @@ void TestMtxSum()
 void TestLucky(void)
 {
     int size1 = 16;
-    int index1 = 0;
+    int index1 = 1;
 
     int size2 = 5;
     int index2 = 2;

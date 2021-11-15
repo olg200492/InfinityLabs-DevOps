@@ -66,6 +66,7 @@ int Lucky(int num)
     {
         if(arr[i] == 1)
         {
+            i = i % (num-1);
             return ++i;
         }
     }
