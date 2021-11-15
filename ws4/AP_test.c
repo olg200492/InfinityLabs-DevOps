@@ -1,21 +1,22 @@
 #include <stdio.h>	/* printf */
+#include <string.h>
 #include "arraypointers.h"	
 
 void TestMtxSum(void);
 void TestLucky(void);
-void TestDTypeNames(void);
-void TestPrintEnv(void);
-void PrintArray(int arr[]);
+//void TestDTypeNames(void);
+//void TestPrintEnv(void);
+void PrintArray(int arr[], int size);
 
 
-extern char **environ;
-char **buffer;
+//extern char **environ;
+//char **buffer;
 
 int main(int argc, char *argv[], char * envp[])
 {
      
-   
-
+    TestLucky();
+    //TestMtxSum();
     return (0);
 }
 
@@ -42,27 +43,27 @@ void TestMtxSum()
     int i = 0;
     int flag = 0;
     int status;
-    status = MtxSum(matrix1_col, matrix1_row, matrix1, &sum_matrix_1);
+    status = MtxSum(matrix1_col, matrix1_row, matrix1, sum_matrix_1);
     if(status == 0)
     {
         //Test case 1 ********************************************************************
-        for( i = 0; i < (sizeof(sum_matrix_1)/ sizeof(int)); i++)
+        for( i = 0; i < matrix1_row; i++)
         {
             if (sum_matrix_1[i] != output_sum_matrix_1[i])
             {   
                 flag = 1;
                 printf("Test case 1 MtxSum FAILED!!!: outcome should be");
-                PrintArray(output_sum_matrix_1);
+                PrintArray(output_sum_matrix_1, matrix1_row);
                 printf("but function returned");
-                PrintArray(sum_matrix_1);
+                PrintArray(sum_matrix_1, matrix1_row);
             }
         }
         if(flag == 0)
         {
             printf("Test case 1 MtxSum PASSED: outcome should be");
-            PrintArray(output_sum_matrix_1);
+            PrintArray(output_sum_matrix_1, matrix1_row);
             printf("function returned");
-            PrintArray(sum_matrix_1);
+            PrintArray(sum_matrix_1, matrix1_row);
         }
         flag = 0;
 
@@ -73,27 +74,27 @@ void TestMtxSum()
     }
 
      //Test case 2 ********************************************************************
-    status = MtxSum(matrix2_col, matrix2_row, matrix2, &sum_matrix_2);
+    status = MtxSum(matrix2_col, matrix2_row, matrix2, sum_matrix_2);
     if(status == 0)
     {
        
-        for( i = 0; i < (sizeof(sum_matrix_2)/ sizeof(int)); i++)
+        for( i = 0; i < matrix2_row; i++)
         {
             if (sum_matrix_2[i] != output_sum_matrix_2[i])
             {   
                 flag = 1;
                 printf("Test case 2 MtxSum FAILED!!!: outcome should be");
-                PrintArray(output_sum_matrix_2);
+                PrintArray(output_sum_matrix_2, matrix2_row);
                 printf("but function returned");
-                PrintArray(sum_matrix_2);
+                PrintArray(sum_matrix_2, matrix2_row);
             }
         }
         if(flag == 0)
         {
-            printf("Test case 1 MtxSum FAILPASSED: outcome should be");
-            PrintArray(output_sum_matrix_2);
+            printf("Test case 2 MtxSum PASSED: outcome should be");
+            PrintArray(output_sum_matrix_2, matrix2_row);
             printf("function returned");
-            PrintArray(sum_matrix_2);
+            PrintArray(sum_matrix_2, matrix2_row);
         }
         flag = 0;
 
@@ -104,27 +105,27 @@ void TestMtxSum()
     }
 
      //Test case 3 ********************************************************************
-    status = MtxSum(matrix3_col, matrix3_row, matrix3, &sum_matrix_3);
+    status = MtxSum(matrix3_col, matrix3_row, matrix3, sum_matrix_3);
     if(status == 0)
     {
        
-        for( i = 0; i < (sizeof(sum_matrix_3)/ sizeof(int)); i++)
+        for( i = 0; i < matrix3_row; i++)
         {
             if (sum_matrix_3[i] != output_sum_matrix_3[i])
             {   
                 flag = 1;
-                printf("Test case 2 MtxSum FAILED!!!: outcome should be");
-                PrintArray(output_sum_matrix_3);
+                printf("Test case 3 MtxSum FAILED!!!: outcome should be");
+                PrintArray(output_sum_matrix_3, matrix3_row);
                 printf("but function returned");
-                PrintArray(sum_matrix_3);
+                PrintArray(sum_matrix_3, matrix3_row);
             }
         }
         if(flag == 0)
         {
-            printf("Test case 1 MtxSum PASSED: outcome should be");
-            PrintArray(output_sum_matrix_3);
+            printf("Test case 3 MtxSum PASSED: outcome should be");
+            PrintArray(output_sum_matrix_3, matrix3_row);
             printf("function returned");
-            PrintArray(sum_matrix_3);
+            PrintArray(sum_matrix_3, matrix3_row);
         }
         flag = 0;
 
@@ -139,6 +140,7 @@ void TestMtxSum()
     
 
 }
+
 
 void TestLucky(void)
 {
@@ -175,7 +177,7 @@ void TestLucky(void)
 
     index_outcome = Lucky(size3);
 
-    if (index_outcome == index2)
+    if (index_outcome == index3)
     {
         printf("Test case 1 Lucky PASSED:group size %d, soldier in index %d last one standing.\n", size3, index_outcome);
     }
@@ -187,7 +189,7 @@ void TestLucky(void)
 
 
 }
-
+/*
 void TestDTypeNames(void)
 {
     printf("Outputof PrintEnv should be:\n");
@@ -224,7 +226,7 @@ void TestPrintEnv(void)
     int flag = 0;
     for(; *arr; arr++)
     {
-        char PATH = *arr;
+        char *PATH = *arr;
         PATH = toupper(PATH);
         if(getenv(PATH) == NULL)
         {   
@@ -240,11 +242,12 @@ void TestPrintEnv(void)
     
 
 }
-void PrintArray(int arr[])
+*/
+void PrintArray(int arr[], int size)
 {   int i = 0;
 
     printf("[");
-    for ( i = 0; i < sizeof(arr)/sizeof(int); i++)
+    for ( i = 0; i < size; i++)
     {
         printf("[%d]", arr[i]);
 
