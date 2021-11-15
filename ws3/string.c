@@ -40,12 +40,12 @@ char *strcpy(char *dest, const char *src)
 char *strncpy(char *dest, const char *src, size_t n)
 {
     size_t i = 0;
-    int j = 0;
-    for (i = 0, j = 0; j < n && j < (strlen(src) +1 ); j++, i++)
+
+    for (i = 0; i < n &&  src[i] != '\0'; i++)
     {
-        dest[j] = src[j];
+        dest[i] = src[i];
     }
-    
+    dest[i] = '\0';
 
     return (dest);
 
@@ -207,6 +207,7 @@ char *strstr(const char *haystack, const char *needle)
 */
 char *strtok(char *str, const char *delim)
 {
+    
     static char *string;
     static int index;
     static int size;
@@ -246,7 +247,7 @@ char *strtok(char *str, const char *delim)
         }
         
     }
-    Token = (char *)malloc(sizeof(PointerDelim - string));
+    Token = (char *)malloc(sizeof(char) * (PointerDelim - string + 1));
     if(Token == NULL)
     {
         printf("ERROR allocation memory in malloc.\n");
@@ -272,6 +273,8 @@ char *strtok(char *str, const char *delim)
         *Token = '\0';
         return (TempToken);
     }
+    
+    
 
 }
 
