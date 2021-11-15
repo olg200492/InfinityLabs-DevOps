@@ -5,19 +5,20 @@
 void TestMtxSum(void);
 void TestLucky(void);
 void TestDTypeNames(void);
-//void TestPrintEnv(void);
+void TestPrintEnv(char * envp[]);
 void PrintArray(int arr[], int size);
 
 
-//extern char **environ;
-//char **buffer;
+
+
 
 int main(int argc, char *argv[], char * envp[])
 {
      
     //TestLucky();
     //TestMtxSum();
-    TestDTypeNames();
+    //TestDTypeNames();
+    TestPrintEnv(envp);
     return (0);
 }
 
@@ -217,33 +218,22 @@ void TestDTypeNames(void)
     DTypeNames();
 
 }
-/*clear
-void TestPrintEnv(void)
+
+void TestPrintEnv(char * envp[])
 {
-    int col1 = sizeof(environ) / sizeof(char);
-    char **arr;
+    int i = 1;
+    printf("ENV from main is:\n");
+    while(*envp)
+    {
+        printf("%d. %s\n", i, *envp);
+        envp++;
+        i++;
+    }
+    printf("\n\n");
+    printf("ENV from PrintEnv() is:\n");
     PrintEnv();
-    
-    int flag = 0;
-    for(; *arr; arr++)
-    {
-        char *PATH = *arr;
-        PATH = toupper(PATH);
-        if(getenv(PATH) == NULL)
-        {   
-            flag =1;
-            printf("Test case  PrintEnv FAILED!!!:%s path does not exist in buffer\n",PATH);
-
-        }
-    }
-    if (flag == 0)
-    {
-        printf("Test case  PrintEnv PASSED!!!:%s path does not exist in buffer\n");
-    }
-    
-
 }
-*/
+
 void PrintArray(int arr[], int size)
 {   int i = 0;
 

@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <string.h> // tolower
+#include <stdlib.h> //malloc
+
 #include "arraypointers.h"
 
 /*recieves a matrix and calculates the sum of each row, sums of rows should be saved in result array, passed by user, return 0 if successful.
@@ -121,7 +124,95 @@ int DTypeNames()
     printf("16. Data Type 'double' size is:%lu Bytes\n", sizeof(double));
     printf("17. Data Type 'long double' size is:%lu Bytes\n", sizeof(long double));
 
+    return (0);
+
 }
-//copies all the envirnoment variables into char** buffer in lower case, and prints them
-int PrintEnv(char **arr, int col);
+/*copies all the envirnoment variables into char** buffer in lower case, and prints them
+    1. find out size of env array
+    2. malloc **arr of size*sizeof(char*)
+    3. check if arr is  NULL,if NULL exit
+    4. if not NULL
+        4.1 while env[j]
+            4.1.1 malloc arr[j] sizeof strlen(env[j]) + 1
+            if arr[j] not NULL
+                while i < strlen(env[j]            
+                    char_temp = tolower(env[j][i]);
+                    arr[j][i] = char_temp;
+                    i++;
+            
+                arr[j][i] = '\0';      
+        
+            i = 0;
+            j++;
+
+*/
+extern char **environ;
+int PrintEnv()
+{   int i = 0;
+    int j = 0;
+    int size = 0;
+    char char_temp;
+    char **temp;
+   
+    
+    char **env = environ;
+    temp = env;
+    for (; *temp; temp++) 
+    {
+        size++;
+    }   
+
+    char **arr = (char**)malloc(sizeof(char*)*(size));
+  
+    if (NULL == arr)
+    {
+        printf("ERROR arr memory allocation\n");
+        exit(0);
+    }
+    else
+    {
+    
+    while(env[j])
+    {
+        arr[j] = (char *) malloc((strlen(env[j])+1)*sizeof(char));
+        if (NULL == arr[j])
+        {
+            printf("ERROR arr[%d] memory allocation\n", j);
+            exit(0);
+        }
+        else
+        {
+            while( i < strlen(env[j]))
+            {
+                char_temp = tolower(env[j][i]);
+                arr[j][i] = char_temp;
+                i++;
+            }
+            arr[j][i] = '\0';      
+        
+            i = 0;
+            j++;
+        }
+       
+       
+    }
+
+    
+    j = 0;
+    
+    while(j < size)
+    {   
+        printf("%s\n", arr[j]);
+        free(arr[j]);
+        arr[j] = NULL;
+        j++;
+    }
+   
+
+    free(arr);
+    arr = NULL;
+    }
+    
+
+}
 
