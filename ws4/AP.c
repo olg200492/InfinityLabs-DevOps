@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "arraypointers.h"
 
 /*recieves a matrix and calculates the sum of each row, sums of rows should be saved in result array, passed by user, return 0 if successful.
@@ -86,8 +87,41 @@ int Lucky(int num)
 
     
 }
-//prints to stdout sizes of all data types
-int DTypeNames();
+/*prints to stdout sizes of all data types
+    print each data type his sizeof
+*/
+int DTypeNames()
+{
+  
+    char list_data_type[][20] = {{"char"}, {"signed char"}, {"unsigned char"}, {"short"},
+                                   {"signed short"} ,{"unsigned short"}, {"int"},
+                                   {"signed int"}, {"unsigned int"}, {"short int"},
+                                   {"signed short int"},{"unsigned short int"},{"long int"},
+                                   {"signed long int"}, {"unsigned long int"}, {"float"},
+                                   {"double"},{"long double"} };
+
+    printf("Otuput in DTypeNames()\n");
+    printf("1. Data Type 'char' size is:%lu Bytes\n", sizeof(char));
+    printf("2. Data Type 'signed' char size is:%lu Bytes\n", sizeof(signed char));
+    printf("3. Data Type 'unsigned char 'size is:%lu Bytes\n", sizeof(unsigned char));
+    printf("4. Data Type 'short' size is:%lu Bytes\n", sizeof(short));
+    printf("5. Data Type 'signed short' size is:%lu Bytes\n", sizeof(signed short));
+    printf("6. Data Type 'unsigned short' size is:%lu Bytes\n", sizeof(unsigned short));
+    printf("7. Data Type 'int' size is:%lu Bytes\n", sizeof(int));
+    printf("8. Data Type 'signed int' size is:%lu Bytes\n", sizeof(signed int));
+    printf("9. Data Type 'short int' size is:%lu Bytes\n", sizeof(short int));
+    printf("10. Data Type 'signed short int' size is:%lu Bytes\n", sizeof(signed short int));
+
+    printf("11. Data Type 'unsigned short int' size is:%lu Bytes\n", sizeof(unsigned short int));
+    printf("12. Data Type 'long int' size is:%lu Bytes\n", sizeof(long int));
+    printf("13. Data Type 'signed long int' size is:%lu Bytes\n", sizeof(signed long int));
+    printf("14. Data Type 'unsigned long int' size is:%lu Bytes\n", sizeof(unsigned long int));
+    printf("15. Data Type 'float' size is:%lu Bytes\n", sizeof(float));
+
+    printf("16. Data Type 'double' size is:%lu Bytes\n", sizeof(double));
+    printf("17. Data Type 'long double' size is:%lu Bytes\n", sizeof(long double));
+
+}
 //copies all the envirnoment variables into char** buffer in lower case, and prints them
 int PrintEnv(char **arr, int col);
 

@@ -4,7 +4,7 @@
 
 void TestMtxSum(void);
 void TestLucky(void);
-//void TestDTypeNames(void);
+void TestDTypeNames(void);
 //void TestPrintEnv(void);
 void PrintArray(int arr[], int size);
 
@@ -15,8 +15,9 @@ void PrintArray(int arr[], int size);
 int main(int argc, char *argv[], char * envp[])
 {
      
-    TestLucky();
+    //TestLucky();
     //TestMtxSum();
+    TestDTypeNames();
     return (0);
 }
 
@@ -189,7 +190,7 @@ void TestLucky(void)
 
 
 }
-/*
+
 void TestDTypeNames(void)
 {
     printf("Outputof PrintEnv should be:\n");
@@ -216,7 +217,7 @@ void TestDTypeNames(void)
     DTypeNames();
 
 }
-
+/*clear
 void TestPrintEnv(void)
 {
     int col1 = sizeof(environ) / sizeof(char);
