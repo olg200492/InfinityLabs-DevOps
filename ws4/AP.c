@@ -31,8 +31,20 @@ int MtxSum(int col, int row, const int matrix [row][col], int arr[row])
 /* calculate last man standing position in josephus game.
     1. set array size of num initilize to 1
     2. set counter = num
-    3. set 
-    3.
+    3. set sword = 1
+    4. while counter > 1
+        4.1 for i to num
+            4.1.2 if arr[i] == 1 AND sword == 0
+                4.1.2.1 sword = 1
+            4.1.3 else if arr[i] == 1 AND sword == 1
+                4.1.3.1 arr[i] = 0
+                4.1.3.2 counter--
+                4.1.3.3 sword--
+    5. for i to num
+        5.1 if arr[i] = 1
+            5.1.1 i = i % (num-1);
+            5.1.1 return ++i
+            
 */
 int Lucky(int num)
 {
