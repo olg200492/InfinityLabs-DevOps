@@ -1,14 +1,20 @@
 #include <stdio.h>	/* printf */
-#include <string.h> /*strcmp */
-#include "array&pointers.h"	
+#include "arraypointers.h"	
 
 void TestMtxSum(void);
 void TestLucky(void);
 void TestDTypeNames(void);
 void TestPrintEnv(void);
 void PrintArray(int arr[]);
-int main()
+
+
+extern char **environ;
+char **buffer;
+
+int main(int argc, char *argv[], char * envp[])
 {
+     
+   
 
     return (0);
 }
@@ -18,19 +24,25 @@ void TestMtxSum()
     int matrix1[2][2] = {{1,2}, {3,4}};
     int sum_matrix_1[2] = {0, 0};
     int output_sum_matrix_1[2] = {3, 7};
+    int matrix1_row = 2;
+    int matrix1_col = 2;
 
     int matrix2[2][3] = {{1,2,3}, {5, 6, 7}};
     int sum_matrix_2[2] = {0, 0};
     int output_sum_matrix_2[2] = {6, 18};
+    int matrix2_row = 2;
+    int matrix2_col = 3;
 
     int matrix3[3][3] = {{1,1,1}, {1, 1, 1}, {1, 1, 1}};
     int sum_matrix_3[3] = {0, 0, 0};
     int output_sum_matrix_3[3] = {3, 3, 3};
+    int matrix3_row = 3;
+    int matrix3_col = 3;
 
     int i = 0;
     int flag = 0;
     int status;
-    status = MtxSum(matrix1, &sum_matrix_1);
+    status = MtxSum(matrix1_col, matrix1_row, matrix1, &sum_matrix_1);
     if(status == 0)
     {
         //Test case 1 ********************************************************************
@@ -47,7 +59,7 @@ void TestMtxSum()
         }
         if(flag == 0)
         {
-            printf("Test case 1 MtxSum FAILPASSED: outcome should be");
+            printf("Test case 1 MtxSum PASSED: outcome should be");
             PrintArray(output_sum_matrix_1);
             printf("function returned");
             PrintArray(sum_matrix_1);
@@ -61,7 +73,7 @@ void TestMtxSum()
     }
 
      //Test case 2 ********************************************************************
-    status = MtxSum(matrix2, &sum_matrix_2);
+    status = MtxSum(matrix2_col, matrix2_row, matrix2, &sum_matrix_2);
     if(status == 0)
     {
        
@@ -92,7 +104,7 @@ void TestMtxSum()
     }
 
      //Test case 3 ********************************************************************
-    status = MtxSum(matrix3, &sum_matrix_3);
+    status = MtxSum(matrix3_col, matrix3_row, matrix3, &sum_matrix_3);
     if(status == 0)
     {
        
@@ -176,7 +188,7 @@ void TestLucky(void)
 
 }
 
-void TestPrintEnv(void)
+void TestDTypeNames(void)
 {
     printf("Outputof PrintEnv should be:\n");
     printf("1. Data Type 'char' size is:%lu Bytes\n", sizeof(char));
@@ -200,6 +212,32 @@ void TestPrintEnv(void)
     printf("17. Data Type 'long double' size is:%lu Bytes\n", sizeof(long double));
 
     DTypeNames();
+
+}
+
+void TestPrintEnv(void)
+{
+    int col1 = sizeof(environ) / sizeof(char);
+    char **arr;
+    PrintEnv();
+    
+    int flag = 0;
+    for(; *arr; arr++)
+    {
+        char PATH = *arr;
+        PATH = toupper(PATH);
+        if(getenv(PATH) == NULL)
+        {   
+            flag =1;
+            printf("Test case  PrintEnv FAILED!!!:%s path does not exist in buffer\n",PATH);
+
+        }
+    }
+    if (flag == 0)
+    {
+        printf("Test case  PrintEnv PASSED!!!:%s path does not exist in buffer\n");
+    }
+    
 
 }
 void PrintArray(int arr[])
