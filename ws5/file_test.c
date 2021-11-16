@@ -9,22 +9,34 @@ void TestPrint(void);
 
 typedef struct print_me{
     int num;
-    void (* Print)(int);
+    void (*Print)(int item);
 } print_me;
 
 int main()
 {
      
-   //TestPrint();
-   print_me pm = {3};
-   pm->Print(pm.num);
+  
+    TestStructPrintMe();
+
     return (0);
 }
 
 
 void TestStructPrintMe(void)
 {
+    int i = 0;   
+    print_me arr[10];
 
+    for (i = 0;i < 10; i++)
+    {
+        arr[i].num = i + 1;
+        arr[i].Print = Print;
+    }
+    
+    for (i = 0; i < 10; i++)
+    {
+        arr[i].Print(arr[i].num);
+    }
 }
 
 void TestPrint(void)
