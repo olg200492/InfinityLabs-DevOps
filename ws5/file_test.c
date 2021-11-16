@@ -16,7 +16,7 @@ int main()
 {
      
   
-    TestStructPrintMe();
+    //TestStructPrintMe();
 
     return (0);
 }
@@ -32,7 +32,7 @@ void TestStructPrintMe(void)
         arr[i].num = i + 1;
         arr[i].Print = Print;
     }
-    
+
     for (i = 0; i < 10; i++)
     {
         arr[i].Print(arr[i].num);
