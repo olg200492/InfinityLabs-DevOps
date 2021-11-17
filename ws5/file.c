@@ -20,12 +20,8 @@ void Print(int item)
     SET char arr[100]
     SET status
     SET flag = 0
-  
-
-
 
 */
-
 int g_flag = 0;
 extern int errno ;
 int Logger(char *filename)
@@ -63,7 +59,7 @@ int Logger(char *filename)
     //printf("Enter name of file:(20 charcter limit\n");
     //scanf("%s", file_name);
     strcpy(file_name, filename);
-    
+
     fp = fopen(file_name, "w");
 
     if (NULL == fp)
@@ -96,7 +92,12 @@ int Logger(char *filename)
  
 
 }
-
+/* 
+    INPUT char string1[], char string2[]
+        IF string1 equel to string2 OR string1 equel to "" OR ( string1 equel to "<" AND string2[0] equel '<')
+            RETURN 0
+        RETURN 1
+*/
 int Comperision(char string1[], char string2[])
 {
     if(strcmp(string1, string2) == 0 || strcmp(string1, "") == 0 ||  (strcmp(string1, "<") == 0) && string2[0] == '<')
@@ -106,6 +107,17 @@ int Comperision(char string1[], char string2[])
     return (1);
 }
 
+/*
+    INPUT char file_name[], char buffer[]
+        CALL remove function with file_name
+        OUTPUT from remove function 
+            IF NOT 0
+                PRINT error msg
+                exit(0)
+        PRINT msg ask to enter new file name or enter '-exit' to stop progrem
+            IF file_name EQUEL to '-exit'
+                SET g_flag TO 1
+*/
 exitstatus_t OperationRemove(char file_name[], char buffer[])
 {
     int status1 = remove(file_name);
@@ -125,6 +137,24 @@ exitstatus_t OperationRemove(char file_name[], char buffer[])
     
 }
 
+/*
+    SET char c;
+    SET int count = 0
+    SET int status1
+    OPEN file file_name to "w" mode
+    IF fp == NULL
+        PRINT error msg
+        RETURN FAILURE
+    ITIRATE on file c = getc(fp); c != EOF;
+        IF c == '\n
+            ADD 1 to count
+    PRINT count to terminal
+    CALL fclose on FILE* fp
+    IF returned EOF
+        PRINT error msg
+        RETURN FAILURE
+    RETURN SUCCESS
+*/
 exitstatus_t OperationCount(char file_name[], char buffer[])
 {
    char c;
@@ -155,15 +185,29 @@ exitstatus_t OperationCount(char file_name[], char buffer[])
     }
     return (SUCCESS);
 }
-
+/*
+SET g_flag =to 1
+*/
 exitstatus_t OperationExit(char file_name[], char buffer[])
 {
-    
-   g_flag = 1;
+    g_flag = 1;
 }
 
 
-
+/*INPUT char file_name[], char buffer[]
+    SET status1, i to 0
+    CALL fopen on file_name mode "a"
+    IF fp EQUEL to NULL
+        PRINT err msg
+        RETURN FAILURE
+    CALL fwrite WITH buffer, sizeof(char), strlen(buffer), fp
+    CALL fwrite WITH "\n", sizeof(char), 1, fp
+    CALL fclose on fp RETURN VALUE set in status1 varible
+    IF status1 EQUEL to EOP
+        PRINT error msg
+        RETURN FAILURE
+    RETURN SUCCESS
+*/
 exitstatus_t OperationWrite(char file_name[], char buffer[])
 {   
     int status1;
@@ -182,10 +226,39 @@ exitstatus_t OperationWrite(char file_name[], char buffer[])
         printf("Error in closing file %s\n", file_name);
         return (FAILURE);
     }
-        return (SUCCESS); 
-    
+    return (SUCCESS);     
 }
-
+/*INPUT char file_name[], char buffer[]:
+    SET char temp[1000]
+    SET char c
+    SET int i = 0
+    SET int status
+    CALL fopen on file_name with mode "r" RETURN VALUE set in fp 
+    IF fp EQUEL to NULL
+        PRINT error msg
+        RETURN FAILURE
+    FOR c =  fgetc(fp); c != EOF; c = fgetc(fp),i++
+        SET temp[i] TO c
+    SET temp[i] TO '\0'
+    CALL fclose on fp RETURN VALUE set in status
+    IF status equel to EOP
+        PRINT error msg
+        RETURN  FAILURE
+    CALL fopen with file_name ,"w" mode RETURN VALUE set in fp
+    IF fp equel to NULL
+        PRINT error msg
+        RETURN  FAILURE
+    FOR i = 1 ; i < strlen(buffer); i++
+        SET c equel to buffer[i]
+        CALL fputc with (c, fp)
+    CALL fputs with("\n",fp);
+    CALL fputs with (temp,fp);
+    CALL fclose on fp RETURN VALUE set in status
+    IF status equel to EOP
+        PRINT error msg
+        RETURN  FAILURE
+    RETURN SUCCESS
+*/
 exitstatus_t OperationAppend(char file_name[], char buffer[])
 {
     char temp[1000];
