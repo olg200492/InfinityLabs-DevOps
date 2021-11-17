@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h> //strtok
 #include <stdarg.h> // va_list
-#include <errno.h> //errno
 #include "helper.h"
 #include "file.h"
 
@@ -15,15 +14,32 @@ void Print(int item)
     printf("'%d'\n", item);
 }
 
-/*INPUT file name as f
-    SET FILE* fp 
-    SET char arr[100]
-    SET status
-    SET flag = 0
-
+/*INPUT char *filename
+    SET chain_t arr[5]
+    SET char buffer[51]
+    SET int flag = 0
+    SET char file_name[21]
+    SET exitstatus_t status
+    SET FILE *fp    
+    SET int i = 0
+    INIT arr with 5 objects
+    CALL strcpy WITH (file_name, filename)
+    CALL fopen(file_name, "w") RETURN VALUE set in fp
+    IF fp equel to NULL
+        PRINT error msg
+        RETURN  FAILURE
+    WHILE g_flag EQUEL to 0
+        PRINT msg enter string
+        CALL scanf SET in buffer
+    FOR i = 0;i < 5; i++
+        IF arr[i].Comperision(arr[i].str, buffer EQUEL TO 0
+                SET status = arr[i].opt(file_name,buffer)               
+                IF status EQUEL TO FAILURE
+                    PRINT error msg
+                    SET g_flag = 1
+                CALL break
 */
 int g_flag = 0;
-extern int errno ;
 int Logger(char *filename)
 {
     chain_t arr[5];
@@ -56,8 +72,6 @@ int Logger(char *filename)
     arr[4].Comperision = Comperision;
     arr[4].opt = OperationWrite;
 
-    //printf("Enter name of file:(20 charcter limit\n");
-    //scanf("%s", file_name);
     strcpy(file_name, filename);
 
     fp = fopen(file_name, "w");
@@ -124,7 +138,7 @@ exitstatus_t OperationRemove(char file_name[], char buffer[])
     
     if(status1 != 0)
     {        
-        printf("Error in removing file %s,value of errno: %d\n", file_name, errno);
+        printf("Error in removing file %s\n", file_name);
         exit(0);
     }
     printf("File %s removed succesfully,enter new file name(20 chracters max) or '-exit' for ending the progrem.\n", file_name);
