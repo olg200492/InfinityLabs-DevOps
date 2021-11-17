@@ -6,18 +6,21 @@
 
 void TestStructPrintMe(void);
 void TestPrint(void);
+void TestLogger(void);
 
 typedef struct print_me{
     int num;
     void (*Print)(int item);
 } print_me;
 
+
+
+
 int main()
 {
-     
-  
     //TestStructPrintMe();
-
+    TestLogger();
+    
     return (0);
 }
 
@@ -63,4 +66,10 @@ void TestPrint(void)
     Print(num3);
     printf("\n");
 
+}
+
+void TestLogger(void)
+{
+    
+    Logger();
 }
