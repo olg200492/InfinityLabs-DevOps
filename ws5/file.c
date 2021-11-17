@@ -3,6 +3,7 @@
 #include <string.h> //strtok
 #include <stdarg.h> // va_list
 #include <errno.h> //errno
+#include "helper.h"
 #include "file.h"
 
 /*

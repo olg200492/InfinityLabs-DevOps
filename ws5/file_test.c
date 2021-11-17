@@ -1,4 +1,5 @@
 #include <stdio.h>	/* printf */
+#include "helper.h"
 #include "file.h"	
 
 
