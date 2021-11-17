@@ -1,8 +1,11 @@
-#ifndef __FILE_H__
-#define __FILE_H__
-#include <stdio.h>
+#ifndef __PHASE1_H__
+#define __PHASE1_H__
+
+
 //print int varible of struct print_me
 void Print(int);
+
+typedef enum  exitstatus_t { SUCCESS , FAILURE} exitstatus_t;
 
 
 
