@@ -20,12 +20,20 @@ typedef struct print_me{
 int main()
 {
     //TestStructPrintMe();
+    exitstatus_t k;
     TestLogger();
     
     return (0);
 }
 
-
+/*
+    SET array size 10 type print_me
+    FOR i to 10
+        SET arr[i].num TO i + 1 
+        SET arr[i].print TO Print
+    FOR i TO 10
+        SHOW arr[i].Print(arr[i].num)
+*/
 void TestStructPrintMe(void)
 {
     int i = 0;   
@@ -43,6 +51,13 @@ void TestStructPrintMe(void)
     }
 }
 
+/*
+    INIT num1 = 0, num2 = 5, num3 = 10
+    PRINT comments to the terminal
+    CALL Print whith num1
+    CALL Print whith num2
+    CALL Print whith num3
+*/
 void TestPrint(void)
 {   int num1 = 0;
     int num2 = 5;
@@ -69,8 +84,11 @@ void TestPrint(void)
 
 }
 
+
 void TestLogger(void)
 {
-    
-    Logger();
+    char file[21];
+    printf("Enter file name:(20 character max\n");
+    scanf("%s", file);
+    Logger(file);
 }

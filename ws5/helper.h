@@ -4,33 +4,31 @@
 
 
 
+typedef enum  exitstatus_t { SUCCESS , FAILURE} exitstatus_t;
 
-//typedef enum op_t {remove, count, exit, append_beiginning, write} op_t;
-typedef enum status_t { passed, failed} status_t;
+typedef exitstatus_t (*Operation)(char file_name[], char buffer[]);
 
-typedef status_t (*Operation)(char file_name[], char buffer[]);
-
-typedef struct chain{
+typedef struct chain_t{
 
     char *str;
     int (*Comperision)(char *str1, char *str2);
     Operation opt;
     
 
-}chain;
+}chain_t;
 
 
-
+//compares string of struct to buffer if true the return 0 else return 1
 int Comperision(char string1[], char string2[]);
-
-status_t OperationRemove(char file_name[], char buffer[]);
-
-status_t OperationCount(char file_name[], char buffer[]);
-
-status_t OperationExit(char file_name[], char buffer[]);
-
-status_t OperationAppend(char file_name[], char buffer[]);
-
-status_t OperationWrite(char file_name[], char buffer[]);
+//Deletes file from file system
+exitstatus_t OperationRemove(char file_name[], char buffer[]);
+//counts numbers of lines in file txt and prints
+exitstatus_t OperationCount(char file_name[], char buffer[]);
+//exit from progrem
+exitstatus_t OperationExit(char file_name[], char buffer[]);
+//appends buffer to the beggining of the file
+exitstatus_t OperationAppend(char file_name[], char buffer[]);
+//writes buffer to file
+exitstatus_t OperationWrite(char file_name[], char buffer[]);
 
 #endif

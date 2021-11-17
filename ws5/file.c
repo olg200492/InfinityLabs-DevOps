@@ -20,35 +20,21 @@ void Print(int item)
     SET char arr[100]
     SET status
     SET flag = 0
-    WHILE flag == 0
-        PRINT Enter an input (max char is 100)
-        OBTAIN input from scanf SET in arr varibale
-        PASS arr TO FindAction function
-        GET output from  FindAction function SET as status
-        CASE status OF
-        CONDITION 1:
-
-
-
-    CALL fopen with f mode w RETURNING FILE* SET fp
-    IF fp == NULL THEN
-        PRINT error
-        EXIT
-    ELSE
+  
 
 
 
 */
 
-int FLAG = 0;
+int g_flag = 0;
 extern int errno ;
-int Logger()
+int Logger(char *filename)
 {
-    chain arr[5];
+    chain_t arr[5];
     char buffer[51];
     int flag = 0;
     char file_name[21];
-    status_t status;
+    exitstatus_t status;
     FILE *fp;
     
     int i = 0;
@@ -74,8 +60,10 @@ int Logger()
     arr[4].Comperision = Comperision;
     arr[4].opt = OperationWrite;
 
-    printf("Enter name of file:(20 charcter limit\n");
-    scanf("%20s", file_name);
+    //printf("Enter name of file:(20 charcter limit\n");
+    //scanf("%s", file_name);
+    strcpy(file_name, filename);
+    
     fp = fopen(file_name, "w");
 
     if (NULL == fp)
@@ -84,10 +72,10 @@ int Logger()
         exit(0);
     }
 
-    while (0 == FLAG)
+    while (0 == g_flag)
     {
         printf("Enter input:(50 charcter limit)\n");
-        scanf("%s", buffer);
+        scanf(" %[^\n]", buffer);
        
         for(i = 0;i < 5; i++)
         {
@@ -96,10 +84,10 @@ int Logger()
             {
                 status = arr[i].opt(file_name,buffer);
                
-                if(status == failed)
+                if(status == FAILURE)
                 {
                     printf("Error in operatin function\n");
-                    FLAG = 1;
+                    g_flag = 1;
                 }
                 break;
             }
@@ -118,7 +106,7 @@ int Comperision(char string1[], char string2[])
     return (1);
 }
 
-status_t OperationRemove(char file_name[], char buffer[])
+exitstatus_t OperationRemove(char file_name[], char buffer[])
 {
     int status1 = remove(file_name);
     
@@ -131,13 +119,13 @@ status_t OperationRemove(char file_name[], char buffer[])
     scanf("%s", file_name);
     if(strcmp(file_name, "-exit") == 0)
     {
-        FLAG = 1;
+        g_flag = 1;
     }
 
     
 }
 
-status_t OperationCount(char file_name[], char buffer[])
+exitstatus_t OperationCount(char file_name[], char buffer[])
 {
    char c;
    int count = 0;
@@ -147,7 +135,7 @@ status_t OperationCount(char file_name[], char buffer[])
    if (NULL == fp)
     {
         printf("Error in opening file %s in OperationCount line 148\n", file_name);
-        return (failed);
+        return (FAILURE);
     }
 
     for (c = getc(fp); c != EOF; c = getc(fp))
@@ -163,20 +151,20 @@ status_t OperationCount(char file_name[], char buffer[])
     if( EOF == status1)
     {
         printf("Error in closing file %s\n", file_name);
-        return (failed);
+        return (FAILURE);
     }
-    return (passed);
+    return (SUCCESS);
 }
 
-status_t OperationExit(char file_name[], char buffer[])
+exitstatus_t OperationExit(char file_name[], char buffer[])
 {
     
-   FLAG = 1;
+   g_flag = 1;
 }
 
 
 
-status_t OperationWrite(char file_name[], char buffer[])
+exitstatus_t OperationWrite(char file_name[], char buffer[])
 {   
     int status1;
     int i = 0;
@@ -184,7 +172,7 @@ status_t OperationWrite(char file_name[], char buffer[])
     if (NULL == fp)
     {
         printf("Error in opening file %s\n", file_name);
-        return failed;
+        return (FAILURE);
     }
     fwrite(buffer, sizeof(char), strlen(buffer), fp);
     fwrite("\n", sizeof(char), 1, fp);
@@ -192,24 +180,24 @@ status_t OperationWrite(char file_name[], char buffer[])
     if( EOF == status1)
     {
         printf("Error in closing file %s\n", file_name);
-        return (failed);
+        return (FAILURE);
     }
-        return (passed); 
+        return (SUCCESS); 
     
 }
 
-status_t OperationAppend(char file_name[], char buffer[])
+exitstatus_t OperationAppend(char file_name[], char buffer[])
 {
     char temp[1000];
     char c;
     int i = 0;
     int status;
-    printf("Hi\n");
+   
     FILE* fp = fopen(file_name, "r");
     if (NULL == fp)
     {
         printf("Error in opening file %s\n in OperationAppend line 210", file_name);
-        return (failed);
+        return (FAILURE);
     }
     for(c =  fgetc(fp); c != EOF; c = fgetc(fp),i++)
     {
@@ -222,13 +210,13 @@ status_t OperationAppend(char file_name[], char buffer[])
     if( EOF == status)
     {
         printf("Error in closing file %s OperationAppend in line 223\n", file_name);
-        return (failed);
+        return (FAILURE);
     }
     fp = fopen(file_name, "w");
     if (fp == NULL)
     {
         printf("Error in opening file %s OperationAppend in line 228\n", file_name);
-        return (failed);
+        return (FAILURE);
     }
     for(i = 1 ; i < strlen(buffer); i++ ) 
     {
@@ -242,8 +230,8 @@ status_t OperationAppend(char file_name[], char buffer[])
     if( EOF == status)
     {
         printf("Error in closing file %s OperationAppend in line 242\n", file_name);
-        return (failed);
+        return (FAILURE);
     }
 
-    return (passed);
+    return (SUCCESS);
 }
