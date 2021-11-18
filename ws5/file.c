@@ -94,9 +94,8 @@ int Logger(char *filename)
             {
                 status = arr[i].opt(fp,file_name,buffer);
                
-                if(status == FAILURE)
+                if(status == EXIT)
                 {
-                    printf("Error in operatin function\n");
                     g_flag = 1;
                 }
                 break;
@@ -148,7 +147,7 @@ exitstatus_t OperationFuncRemove(FILE *fp, char* FileNeme, char* string)
         g_flag = 1;
     }
 
-    
+    return (REMOVE);
 }
 
 /*
@@ -179,7 +178,7 @@ exitstatus_t OperationFuncCountLine(FILE *fp, char* FileNeme, char* string)
    if (NULL == fp)
     {
         printf("Error in opening file %s in OperationCount line 148\n", FileNeme);
-        return (FAILURE);
+        return (EXIT);
     }
 
     for (c = getc(fp); c != EOF; c = getc(fp))
@@ -195,9 +194,9 @@ exitstatus_t OperationFuncCountLine(FILE *fp, char* FileNeme, char* string)
     if( EOF == status1)
     {
         printf("Error in closing file %s\n", FileNeme);
-        return (FAILURE);
+        return (EXIT);
     }
-    return (SUCCESS);
+    return (COUNTLINE);
 }
 /*
 SET g_flag =to 1
@@ -205,6 +204,7 @@ SET g_flag =to 1
 exitstatus_t OperationFuncExit(FILE *fp, char* FileNeme, char* string)
 {
     g_flag = 1;
+    return (EXIT);
 }
 
 
@@ -230,7 +230,7 @@ exitstatus_t OperationFuncPrintToFile( FILE *fp, char* FileNeme ,char *string)
     if (NULL == fp)
     {
         printf("Error in opening file %s\n", FileNeme);
-        return (FAILURE);
+        return (EXIT);
     }
     fwrite(string, sizeof(char), strlen(string), fp);
     fwrite("\n", sizeof(char), 1, fp);
@@ -238,9 +238,9 @@ exitstatus_t OperationFuncPrintToFile( FILE *fp, char* FileNeme ,char *string)
     if( EOF == status1)
     {
         printf("Error in closing file %s\n", FileNeme);
-        return (FAILURE);
+        return (EXIT);
     }
-    return (SUCCESS);     
+    return (WRITE);     
 }
 /*INPUT char file_name[], char buffer[]:
     SET char temp[1000]
@@ -284,7 +284,7 @@ exitstatus_t OperationFuncPrintTop(FILE *fp,char* FileNeme, char* string)
     if (NULL == fp)
     {
         printf("Error in opening file %s\n in OperationAppend line 210", FileNeme);
-        return (FAILURE);
+        return (WRITE);
     }
     for(c =  fgetc(fp); c != EOF; c = fgetc(fp),i++)
     {
@@ -297,13 +297,13 @@ exitstatus_t OperationFuncPrintTop(FILE *fp,char* FileNeme, char* string)
     if( EOF == status)
     {
         printf("Error in closing file %s OperationAppend in line 223\n", FileNeme);
-        return (FAILURE);
+        return (WRITE);
     }
     fp = fopen(FileNeme, "w");
     if (fp == NULL)
     {
         printf("Error in opening file %s OperationAppend in line 228\n", FileNeme);
-        return (FAILURE);
+        return (WRITE);
     }
     for(i = 1 ; i < strlen(string); i++ ) 
     {
@@ -317,8 +317,8 @@ exitstatus_t OperationFuncPrintTop(FILE *fp,char* FileNeme, char* string)
     if( EOF == status)
     {
         printf("Error in closing file %s OperationAppend in line 242\n", FileNeme);
-        return (FAILURE);
+        return (WRITE);
     }
 
-    return (SUCCESS);
+    return (APPEND);
 }

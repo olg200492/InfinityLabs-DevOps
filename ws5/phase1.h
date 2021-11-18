@@ -5,7 +5,7 @@
 //print int varible of struct print_me
 void Print(int);
 
-typedef enum  exitstatus_t { SUCCESS , FAILURE} exitstatus_t;
+typedef enum  exitstatus_t { REMOVE , COUNTLINE, EXIT, APPEND, WRITE} exitstatus_t;
 
 
 
