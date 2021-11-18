@@ -74,7 +74,7 @@ int Logger(char *filename)
 
     strcpy(file_name, filename);
 
-    fp = fopen(file_name, "w");
+    fp = fopen(file_name, "a");
 
     if (NULL == fp)
     {
