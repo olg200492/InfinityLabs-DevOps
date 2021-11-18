@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 int * IsSumFound(int arr[],int sum, int size);
+int BinarySerch(int arr[],int index1, int index2,int num);
 int main() {
   int arr[] = {2, 4, 7, 12, 14};
 
@@ -26,33 +27,23 @@ int * IsSumFound(int arr[],int sum, int size)
 {
   int i = 0;
   int j = 0;
-  int flag = 0;
   int index1 = -1;
   int index2 = -1;
   int num;
   int *arr1 = NULL;
   for(i = 0; i < size && arr[i]< sum;i++)
   {
-    if (flag == 1)
-    {
-      break;
-    }
     num = sum - arr[i];
     j = i + 1;
-    while (j < size && arr[j] < sum)
+    index2 = BinarySerch(arr,0,size-1,num);
+    if(index2 != -1)
     {
-      if (arr[j] == num)
-      {
         index1 = i;
-        index2 = j;
-        flag = 1;
         break;
-      }
-      j++;
     }
     
   }
-  if (flag == 1)
+  if (index1 != -1)
   {
     arr1 = (int*)malloc(sizeof(int)*3);
     if (arr1 != NULL)
@@ -81,4 +72,29 @@ int * IsSumFound(int arr[],int sum, int size)
     }
   }
   return arr1;
+}
+
+int BinarySerch(int arr[],int index1, int index2,int num)
+{
+    int i = (index2+index1) /2;
+    if(index1 <= index2 )
+    {
+        if(arr[i] == num)
+        {
+            return (i);
+        }
+        if( arr[i] > num)
+        {
+            return BinarySerch(arr, index1,i-1,num);
+        }
+        if(arr[i] < num)
+        {
+            return BinarySerch(arr, i+1,index2,num);
+        }
+    }
+    else
+    {
+        return (-1);
+    }
+        
 }
