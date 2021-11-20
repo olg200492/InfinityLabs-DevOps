@@ -13,11 +13,12 @@ exitstatus_t OperationFuncPrintTop(FILE *fp,char* FileNeme, char* string);
 
 exitstatus_t OperationFuncPrintToFile( FILE *fp, char* FileNeme ,char *string);
 
+typedef   exitstatus_t(*Operation)(FILE *fp, char* FileNeme, char* string );
 int Comparison1(char* string, char* string2);
 
 
 
-typedef   exitstatus_t(*Operation)(FILE *fp, char* FileNeme, char* string );
+
 
 typedef   int(*Comparison)(char* string, char* string2);
 

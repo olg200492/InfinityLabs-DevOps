@@ -1,5 +1,6 @@
 #include <stdio.h>	/* printf */
 #include <stdlib.h>
+#include <stddef.h>
 
 int * IsSumFound(int arr[],int sum, int size);
 int main() {
