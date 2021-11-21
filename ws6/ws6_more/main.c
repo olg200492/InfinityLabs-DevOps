@@ -1,10 +1,11 @@
-#include <stdio.h> //printf
-//#include "a.c"
+#include <stdio.h> 
 #include "g.h"
 
-void main()
+int main()
 {
     printf("g_s = %d\n",g_s);
     Foo();
     printf("g_s = %d\n",g_s);
+
+    return (0);
 }
