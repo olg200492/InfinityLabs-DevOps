@@ -72,7 +72,12 @@ void *StackPop(stack_t *stack)
     stack->size--;
     return temp;
 }
- 
+/*
+    INPUT stack_t *stack, void *value
+        IF stack->size + 1 <= stack->capacity
+            INCREMENT  stack->size
+            SET stack->array[stack->size - 1] EQUEL value
+*/
 void StackPush(stack_t *stack, void *value)
 {
     if((stack->size + 1) <= stack->capacity)
@@ -81,7 +86,12 @@ void StackPush(stack_t *stack, void *value)
         stack->array[stack->size - 1] = value;
     }
 }
-
+/*
+    INPUT stack_t *stack
+        IF  IsStackEmpty(stack) EQUEL 0
+            RETURN NULL
+        RETURN stack->array[stack->size - 1]
+*/
 void *StackPeek(const stack_t *stack)
 {
     if(IsStackEmpty(stack))
@@ -90,12 +100,18 @@ void *StackPeek(const stack_t *stack)
     }
     return stack->array[stack->size - 1];
 }
-
+/*
+    INPUT const stack_t *stack
+        RETURN  stack->size
+*/
 size_t StackSize(const stack_t *stack)
 {
     return stack->size;
 }
-
+/*
+    INPUT const stack_t *stack
+        RETURN (stack->size  == 0)
+*/
 int IsStackEmpty(const stack_t *stack)
 {
     return (stack->size  == 0);
