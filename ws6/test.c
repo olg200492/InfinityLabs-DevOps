@@ -1,5 +1,5 @@
 #include <stdio.h> 
-#include "g.h"
+
 
 
 int g_s = 3;
@@ -12,5 +12,3 @@ int main()
 
     return (0);
 }
-
-
