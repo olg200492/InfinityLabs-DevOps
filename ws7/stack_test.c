@@ -26,8 +26,8 @@ int main()
    //TestStackPush();
    //TestStackPeek();
    //TestStackSize();
-   //TestIsStackEmpty();
-   TestStackCapacity();
+   TestIsStackEmpty();
+   //TestStackCapacity();
 
    return (0);
 }
@@ -195,7 +195,7 @@ void TestIsStackEmpty(void)
     int num_two = 2;
     char c = 'A';
     
-    if(IsStackEmpty(stack1))
+    if(IsStackEmpty(stack1) == 1)
     {
         printf("Test case 1 StackCapacity PASSED:returned value of for IsStackEmpty(stack1) is %d\n", IsStackEmpty(stack1));
     }
@@ -206,7 +206,7 @@ void TestIsStackEmpty(void)
 
     StackPush(stack1, &num_one);
 
-    if(IsStackEmpty(stack1))
+    if(IsStackEmpty(stack1) == 1)
     {
         printf("Test case 1 StackCapacity FAILED:returned value of for IsStackEmpty(stack1) is %d\n", IsStackEmpty(stack1));
     }

@@ -25,15 +25,15 @@ struct stack {
 stack_t *StackCreate(size_t capacity)
 {
     stack_t* stack = (stack_t*)malloc(sizeof(stack_t));
-    if(stack == NULL)
+    if (stack == NULL)
     {
         printf("Error in allocation stack\n");
         exit(0);
     }
     stack->capacity = capacity;
     stack->size = 0;
-    stack->array = (void **)malloc(stack->capacity * sizeof(void *));
-    if(stack->array == NULL)
+    stack->array = (void **)malloc(capacity * sizeof(void *));
+    if (stack->array == NULL)
     {
         printf("Error in allocation stack->array\n");
         exit(0);
@@ -64,13 +64,13 @@ void StackDestroy(stack_t *stack)
 */
 void *StackPop(stack_t *stack)
 {
-    if(IsStackEmpty(stack))
+    if (IsStackEmpty(stack))
     {
         return NULL;
     }
-    void *temp = stack->array[stack->size - 1];
+
     stack->size--;
-    return temp;
+    return stack->array[stack->size];
 }
 /*
     INPUT stack_t *stack, void *value
@@ -80,7 +80,7 @@ void *StackPop(stack_t *stack)
 */
 void StackPush(stack_t *stack, void *value)
 {
-    if((stack->size + 1) <= stack->capacity)
+    if ((stack->size + 1) <= stack->capacity)
     {
         stack->size++;
         stack->array[stack->size - 1] = value;
@@ -94,7 +94,7 @@ void StackPush(stack_t *stack, void *value)
 */
 void *StackPeek(const stack_t *stack)
 {
-    if(IsStackEmpty(stack))
+    if (IsStackEmpty(stack))
     {
         return NULL;
     }
@@ -114,7 +114,11 @@ size_t StackSize(const stack_t *stack)
 */
 int IsStackEmpty(const stack_t *stack)
 {
-    return (stack->size  == 0);
+    if (stack->size  == 0)
+    {
+        return 1;
+    }
+    return 0;
 }
 
 size_t StackCapacity(const stack_t *stack)
