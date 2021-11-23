@@ -1,3 +1,6 @@
+#include <stdio.h>  /*printf */
+#include <stdlib.h> /*relloc,malloc */
+#include <string.h> /*memcpy*/
 #include "vector.h"
 
 struct vector
@@ -55,14 +58,14 @@ static void VectorResize(vector_t *vector, int capacity)
 */
 size_t VectorSize(const vector_t *vector)
 {
-
+    return vector->size;
 }
 /*INPUT:const vector_t *vector, int index
     RETURN vector->array[index]
 */
 void *VectorGet(const vector_t *vector, int index)
 {
-
+    return (vector->array + index * vector->elem_size);
 }
 /*INPUT:vector_t *vector, const void *item
     IF vector->size == vector->capacity
@@ -72,7 +75,14 @@ void *VectorGet(const vector_t *vector, int index)
 */
 void VectorAppend(vector_t *vector, const void *item)
 {
-
+    if (vector->size  == vector->capacity)
+    {
+        VectorResize(vector, vector->capacity * 2);
+        vector->capacity = (vector->capacity) * 2;
+    } 
+    
+    memcpy((vector->array + vector->elem_size * vector->size), item ,vector->elem_size);
+    vector->size++;
 }
 /*INPUT:vector_t *vector
 DECREMENT vector->size--
@@ -82,6 +92,16 @@ IF (vector->size)*4 == vector->capacity
 */
 void VectorPop(vector_t *vector)
 {
+    if (vector->size == 0)
+    {
+        return;
+    }
+    if ((vector->size * 4) == vector->capacity)
+    {
+        VectorResize(vector, vector->capacity / 2);
+        vector->capacity = vector->capacity / 2;
+    }
+    vector->size--;
 
 }
 /*INPUT:vector_t *vector
@@ -90,7 +110,8 @@ void VectorPop(vector_t *vector)
 */
 void VectorDestroy(vector_t *vector)
 {
-
+    free(vector->array);
+    free(vector);
 }
 /*INPUT:const vector_t *vector
     IF vector->size EQUEL 0
@@ -99,12 +120,16 @@ void VectorDestroy(vector_t *vector)
 */
 int VectorIsEmpty(const vector_t *vector)
 {
-
+    if (vector->size == 0)
+    {
+        return (0);
+    }
+    return (1);
 }
 /*INPUT:const vector_t *vector
     RETURN vector->capacity
 */
 size_t VectorCapacity(const vector_t *vector)
 {
-
+    return vector->capacity;
 }
