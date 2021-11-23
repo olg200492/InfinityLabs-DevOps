@@ -22,11 +22,11 @@ int main()
 
    //TestStackCreate();
    //TestStackDestroy();
-   //TestStackPop();
+   TestStackPop();
    //TestStackPush();
    //TestStackPeek();
    //TestStackSize();
-   TestIsStackEmpty();
+   //TestIsStackEmpty();
    //TestStackCapacity();
 
    return (0);
@@ -106,15 +106,6 @@ void TestStackPop(void)
         printf("Test case 3 StackPop FAILED:returned value for StackPop is %d\n",*(num_p));
     }  
 
-    num_p = StackPop(stack1);
-    if(num_p == NULL)
-    {
-        printf("Test case 3 StackPop PASSED:returned value for StackPop is %p\n",num_p);
-    }
-    else
-    {
-        printf("Test case 3 StackPop FAILED:returned value for StackPop is %p\n",num_p);
-    } 
 
     StackDestroy(stack1);
 }

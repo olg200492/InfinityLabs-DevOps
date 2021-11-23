@@ -1,5 +1,6 @@
 #include <stdio.h> 
 #include <stdlib.h>
+#include <assert.h> /* assert*/
 #include "stack.h"
 /* A structure to represent a stack */
 struct stack {
@@ -24,21 +25,20 @@ struct stack {
 */
 stack_t *StackCreate(size_t capacity)
 {
-    stack_t* stack = (stack_t*)malloc(sizeof(stack_t));
+    struct stack *stack = (stack_t*)malloc( (sizeof(size_t)*2) + (capacity * sizeof(void*) ) );
     if (stack == NULL)
     {
         printf("Error in allocation stack\n");
         exit(0);
     }
-    stack->capacity = capacity;
     stack->size = 0;
-    stack->array = (void **)malloc(capacity * sizeof(void *));
-    if (stack->array == NULL)
-    {
-        printf("Error in allocation stack->array\n");
-        exit(0);
-    }
+    stack->capacity = capacity;
+    stack->array = (void **)(stack + sizeof(size_t)*2);
+
+    //assert(stack->size == 0);
     
+    //stack->array = (void **)(stack + (sizeof(size_t)*2));  
+   
     return (stack);
 }
 /* INPUT stack_t *stack
@@ -49,9 +49,6 @@ stack_t *StackCreate(size_t capacity)
 */
 void StackDestroy(stack_t *stack)
 {
-    free(stack->array);
-    stack->array = NULL;
-
     free(stack);
     stack = NULL;
 }
@@ -106,7 +103,7 @@ void *StackPeek(const stack_t *stack)
 */
 size_t StackSize(const stack_t *stack)
 {
-    return stack->size;
+    return (stack->size);
 }
 /*
     INPUT const stack_t *stack
