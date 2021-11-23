@@ -1,17 +1,8 @@
 #ifndef __VECTOR_H__
 #define __VECTOR_H__
-#include <stddef.h>
+#include <stddef.h> /* size_t data type */
 
-/*
-typedef struct vector vector_t
-{
-    size_t capacity;
-    size_t size;
-    size_t elem_size;
-    void *array;
-}vector_t;
 
-*/
 typedef struct vector vector_t;
 
 /* Creates vector varible ,recives size of element
