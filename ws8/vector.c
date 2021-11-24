@@ -25,20 +25,23 @@ vector_t *VectorCreate(size_t elem_size, size_t capacity)
 {
     vector_t *temp = (vector_t*)malloc(sizeof(vector));
 
-    if (temp == NULL)
+    if (NULL == temp)
     {
         printf("Error in allocation vector_t\n");
-        exit(0);
+        return NULL;
     }
+
+    temp->array = (void*)malloc(elem_size * capacity);
+    if (NULL == temp->array)
+    {
+        free(temp);
+        printf("Error in allocation vector->array\n");
+        return NULL;
+    }
+
     temp->capacity = capacity;
     temp->elem_size = elem_size;
-    temp->size = 0;
-    temp->array = (void*)malloc(sizeof(elem_size) * capacity);
-    if (temp->array == NULL)
-    {
-        printf("Error in allocation vector->array\n");
-        exit(0);
-    }
+    temp->size = 0;   
 
     return temp;
 }
@@ -50,8 +53,15 @@ vector_t *VectorCreate(size_t elem_size, size_t capacity)
         SET vector->capacity EQUEL capacity
 */
 static void VectorResize(vector_t *vector, int capacity)
-{
-
+{ 
+    void *temp = (void *)realloc(vector->array, vector->elem_size * capacity);
+    if (NULL == temp)
+    {
+        printf("ERROR in VectorResize\n");
+        exit(0);
+    }
+    vector->array = temp;
+    vector->capacity = capacity;
 }
 /*INPUT:const vector_t *vector
     RETURN vector->size
@@ -92,16 +102,15 @@ IF (vector->size)*4 == vector->capacity
 */
 void VectorPop(vector_t *vector)
 {
-    if (vector->size == 0)
+    if (vector->size > 0)
     {
-        return;
+        vector->size--;
     }
     if ((vector->size * 4) == vector->capacity)
     {
         VectorResize(vector, vector->capacity / 2);
         vector->capacity = vector->capacity / 2;
     }
-    vector->size--;
 
 }
 /*INPUT:vector_t *vector
@@ -120,11 +129,7 @@ void VectorDestroy(vector_t *vector)
 */
 int VectorIsEmpty(const vector_t *vector)
 {
-    if (vector->size == 0)
-    {
-        return (0);
-    }
-    return (1);
+    return !(0 == vector->size);
 }
 /*INPUT:const vector_t *vector
     RETURN vector->capacity

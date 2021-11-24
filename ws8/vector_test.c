@@ -4,7 +4,7 @@
  * tests for vector_test.c funtions                   *
 
  *****************************************************/ 
-#include <stdio.h>
+#include <stdio.h> /* printf */
 #include "vector.h"
 
 void TestVectorCreate(void);
@@ -19,17 +19,17 @@ void TestVectorSize(void);
 int main()
 {
     
-  //TestVectorCreate();
-  //TestVectorCapacity();
-  //TestVectorSize();
-  //TestVectorAppend();
-  //TestVectorGet();
-  //TestVectorPop();
+  TestVectorCreate();
+  TestVectorCapacity();
+  TestVectorSize();
+  TestVectorAppend();
+  TestVectorGet();
+  TestVectorPop();
 
   TestVectorResize();
-  //TestVectorCapacity();
-  //TestVectorEmpty();
-    //TestVectorDestroy();
+  TestVectorCapacity();
+  TestVectorEmpty();
+    TestVectorDestroy();
    return (0);
 }
 void TestVectorCreate(void)
@@ -245,7 +245,7 @@ void TestVectorResize(void)
     VectorAppend(vector, &num);
     VectorAppend(vector, &num);
 
-    if (VectorCapacity(vector) == 10)
+    if (VectorCapacity(vector) == 20)
     {
         printf("TEST 1 VectorResize PASSED:vector capacity: %lu\n", VectorCapacity(vector));
     }
