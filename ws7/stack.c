@@ -25,20 +25,22 @@ struct stack {
 */
 stack_t *StackCreate(size_t capacity)
 {
-    struct stack *stack = (stack_t*)malloc( (sizeof(size_t)*2) + (capacity * sizeof(void*) ) );
-    if (stack == NULL)
+    stack_t *stack = (stack_t*)malloc(sizeof(size_t) * 2 + sizeof(void**)*capacity);
+    if (NULL == stack)
     {
         printf("Error in allocation stack\n");
-        exit(0);
+        return NULL;
     }
     stack->size = 0;
     stack->capacity = capacity;
-    stack->array = (void **)(stack + sizeof(size_t)*2);
-
-    //assert(stack->size == 0);
     
-    //stack->array = (void **)(stack + (sizeof(size_t)*2));  
-   
+    stack->array = (void **)malloc((sizeof(void *)) * capacity);  
+    if (NULL == stack->array)
+    {
+        free(stack);
+        printf("Error in allocation stack->array\n");
+        return NULL;
+    }
     return (stack);
 }
 /* INPUT stack_t *stack
@@ -48,7 +50,10 @@ stack_t *StackCreate(size_t capacity)
         SET stack EQUEL NULL
 */
 void StackDestroy(stack_t *stack)
-{
+{   
+    free(stack->array);
+    stack->array = NULL;
+
     free(stack);
     stack = NULL;
 }
@@ -61,7 +66,7 @@ void StackDestroy(stack_t *stack)
 */
 void *StackPop(stack_t *stack)
 {
-    if (IsStackEmpty(stack))
+    if (stack->size <= 0)
     {
         return NULL;
     }

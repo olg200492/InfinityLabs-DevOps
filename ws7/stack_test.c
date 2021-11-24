@@ -20,14 +20,14 @@ void TestStackCapacity(void);
 int main()
 {
 
-   //TestStackCreate();
-   //TestStackDestroy();
+   TestStackCreate();
+   TestStackDestroy();
    TestStackPop();
-   //TestStackPush();
-   //TestStackPeek();
-   //TestStackSize();
-   //TestIsStackEmpty();
-   //TestStackCapacity();
+   TestStackPush();
+   TestStackPeek();
+   TestStackSize();
+   TestIsStackEmpty();
+   TestStackCapacity();
 
    return (0);
 }
@@ -225,14 +225,17 @@ void TestStackCapacity(void)
     }
 
     StackDestroy(stack1);
+    stack1 = NULL;
 
-    stack1 = StackCreate(1);
-    if(StackCapacity(stack1) == 1)
+    stack_t *stack2 = StackCreate(1);
+    if(StackCapacity(stack2) == 1)
     {
-        printf("Test case 2 StackCapacity PASSED:returned value of for StackCapacity(stack1) is %lu\n", StackCapacity(stack1));
+        printf("Test case 2 StackCapacity PASSED:returned value of for StackCapacity(stack1) is %lu\n", StackCapacity(stack2));
     }
     else
     {
-        printf("Test case 2 StackCapacity FAILED:returned value of for IsStackEmpty(stack1) is %lu\n", StackCapacity(stack1));
+        printf("Test case 2 StackCapacity FAILED:returned value of for IsStackEmpty(stack1) is %lu\n", StackCapacity(stack2));
     }
+
+    StackDestroy(stack2);
 }
