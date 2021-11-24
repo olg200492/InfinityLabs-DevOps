@@ -55,11 +55,7 @@ vector_t *VectorCreate(size_t elem_size, size_t capacity)
 static void VectorResize(vector_t *vector, int capacity)
 { 
     void *temp = (void *)realloc(vector->array, vector->elem_size * capacity);
-    if (NULL == temp)
-    {
-        printf("ERROR in VectorResize\n");
-        exit(0);
-    }
+    assert(temp != NULL);
     vector->array = temp;
     vector->capacity = capacity;
 }
