@@ -3,6 +3,8 @@
 #include <string.h> /*memcpy*/
 #include "vector.h"
 
+#define GROWTH_FACTOR 2
+
 struct vector
 {
     size_t capacity;
@@ -12,13 +14,13 @@ struct vector
 }vector;
 
 /*  INPUT size_t elem_size, size_t capacity 
-        CALL malloc sizeof(size_t), + (elem_size * capacity) SET in vector_t *temp
+        CALL malloc (vector_t*)malloc(sizeof(vector)) SET in vector_t *temp
             IF temp EQUEL NULL
             PRINT error msg
         SET temp->capacity EQUEL capacity
         SET temp->elem_size EQUEL elem_size
         SET temp->size EQUEL 0
-        SET temp->array EQUEL (void*)malloc(sizeof(elem_size) * capacity)
+        SET temp->array EQUEL (void*)malloc(elem_size * capacity)
     RETURN temp
 */
 vector_t *VectorCreate(size_t elem_size, size_t capacity)
@@ -52,18 +54,25 @@ vector_t *VectorCreate(size_t elem_size, size_t capacity)
         SET vector->array EQUEL temp
         SET vector->capacity EQUEL capacity
 */
-static void VectorResize(vector_t *vector, int capacity)
+static void VectorResize(vector_t *vector, size_t capacity)
 { 
     void *temp = (void *)realloc(vector->array, vector->elem_size * capacity);
-    assert(temp != NULL);
-    vector->array = temp;
-    vector->capacity = capacity;
+    if (NULL == temp)
+    {
+        free(vector);
+    }
+    else
+    {
+        vector->array = temp;
+        vector->capacity = capacity;
+    }    
 }
 /*INPUT:const vector_t *vector
     RETURN vector->size
 */
 size_t VectorSize(const vector_t *vector)
 {
+    assert(vector != NULL);
     return vector->size;
 }
 /*INPUT:const vector_t *vector, int index
@@ -71,6 +80,8 @@ size_t VectorSize(const vector_t *vector)
 */
 void *VectorGet(const vector_t *vector, int index)
 {
+    assert(NULL != vector);
+    assert(index < vector->size);
     return (vector->array + index * vector->elem_size);
 }
 /*INPUT:vector_t *vector, const void *item
@@ -83,8 +94,8 @@ void VectorAppend(vector_t *vector, const void *item)
 {
     if (vector->size  == vector->capacity)
     {
-        VectorResize(vector, vector->capacity * 2);
-        vector->capacity = (vector->capacity) * 2;
+        VectorResize(vector, vector->capacity * GROWTH_FACTOR);
+        vector->capacity = (vector->capacity) * GROWTH_FACTOR;
     } 
     
     memcpy((vector->array + vector->elem_size * vector->size), item ,vector->elem_size);
@@ -98,14 +109,16 @@ IF (vector->size)*4 == vector->capacity
 */
 void VectorPop(vector_t *vector)
 {
+    assert(NULL != vector);
+
     if (vector->size > 0)
     {
         vector->size--;
     }
     if ((vector->size * 4) == vector->capacity)
     {
-        VectorResize(vector, vector->capacity / 2);
-        vector->capacity = vector->capacity / 2;
+        VectorResize(vector, vector->capacity / GROWTH_FACTOR);
+        vector->capacity = vector->capacity / GROWTH_FACTOR;
     }
 
 }
@@ -125,6 +138,7 @@ void VectorDestroy(vector_t *vector)
 */
 int VectorIsEmpty(const vector_t *vector)
 {
+    assert(NULL != vector);
     return !(0 == vector->size);
 }
 /*INPUT:const vector_t *vector
@@ -132,5 +146,6 @@ int VectorIsEmpty(const vector_t *vector)
 */
 size_t VectorCapacity(const vector_t *vector)
 {
+    assert(NULL != vector);
     return vector->capacity;
 }
