@@ -1,4 +1,4 @@
-#include "ex4.c" //Includes PrintsHelloWorld!
+#include "ex4.h" //Includes PrintsHelloWorld!
 
 int main()
 {  
