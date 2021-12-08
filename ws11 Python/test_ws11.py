@@ -19,7 +19,7 @@ print_str_num_times("one", 2)
 print("End test for Ex2")
 
 print("Test for ex3")
-check_if_leap_year(2000)
+check_if_leap_year(100)
 check_if_leap_year(2021)
 check_if_leap_year(1992)
 print("End test for Ex3")

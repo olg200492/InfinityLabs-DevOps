@@ -1,4 +1,5 @@
 def grade(grade_score):
+    """print grade in american scale"""
     grade_score = int(grade_score) 
     if 0 <= grade_score <= 100:
         if 0<= grade_score <10:

@@ -1,7 +1,5 @@
-def print_str_num_times(str, num = 0):
-    if num == 0:
+def print_str_num_times(str, num = 1):
+    """ prints str num times"""
+    while num > 0:
         print(str)
-    else:
-        while num > 0:
-            print(str)
-            num-=1
+        num-=1

@@ -1,4 +1,5 @@
 def flip_digits(num):
+    """prints revest digit """
     num = int(num)
     sign = 1
     if num < 0:
