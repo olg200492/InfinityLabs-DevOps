@@ -1,4 +1,4 @@
 
-#import MyPackage
-from MyPackage import *
-foo()
+import MyPackage
+#from MyPackage import *
+MyPackage.foo()
