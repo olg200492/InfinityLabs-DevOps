@@ -4,6 +4,7 @@ from ex3 import boom_7_for, boom_7_list_comprehension, boom_7_map
 from ex4 import dict_to_list, dict_to_list_comp
 from ex5 import count_number_of_arguments
 from ex6 import func
+from ex7 import make_adder
 
 print("Test ex1 sum list in for function")
 print("sum list in for [1,1,1,1] returned:"+str(sum_list_for([1,1,1,1])), " 'PASSED'" if sum_list_for([1,1,1,1]) == 4 else " 'FAILED'")
@@ -39,6 +40,15 @@ print("********************************************")
 print(count_number_of_arguments())
 print(count_number_of_arguments(1))
 print(count_number_of_arguments(1,2))
+print("********************************************")
 print("Test ex6")
 func(1, 2, 3, name="hello")
 func(1,2,3)
+print("********************************************")
+print("Test ex7")
+add_3 = make_adder(3)
+print("add_3(5):" + str(add_3(5)))
+print("add_3(3):" + str(add_3(3)))
+add_7 = make_adder(7)
+print("add_7(1):" + str(add_7(1)))
+print("add_7(-3):" + str(add_7(-3)))
