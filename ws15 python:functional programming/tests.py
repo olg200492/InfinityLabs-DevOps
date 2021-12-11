@@ -2,6 +2,7 @@ from ex1 import sum_list_for, sum_list_reduce, sum_list_sum_func
 from ex2 import list_comp
 from ex3 import boom_7_for, boom_7_list_comprehension, boom_7_map
 from ex4 import dict_to_list, dict_to_list_comp
+from ex5 import count_number_of_arguments
 from ex6 import func
 
 print("Test ex1 sum list in for function")
@@ -33,6 +34,11 @@ print("Test ex4")
 print(dict_to_list(['a', 'b', 'c']))
 print(dict_to_list_comp(['a', 'b', 'c']))
 print("********************************************")
+print("Test ex5")
+print("********************************************")
+print(count_number_of_arguments())
+print(count_number_of_arguments(1))
+print(count_number_of_arguments(1,2))
 print("Test ex6")
 func(1, 2, 3, name="hello")
 func(1,2,3)
