@@ -1,7 +1,6 @@
-from ex1 import sum_list_for
-from ex1 import sum_list_reduce
-from ex1 import sum_list_sum_func
+from ex1 import sum_list_for, sum_list_reduce, sum_list_sum_func
 from ex2 import list_comp
+from ex3 import boom_7_for, boom_7_list_comprehension, boom_7_map
 
 print("Test ex1 sum list in for function")
 print("sum list in for [1,1,1,1] returned:"+str(sum_list_for([1,1,1,1])), " 'PASSED'" if sum_list_for([1,1,1,1]) == 4 else " 'FAILED'")
@@ -19,3 +18,11 @@ print("sum_list_sum_func (1,2,3,4) returned:" + str(sum_list_sum_func((1,2,3,4))
 print("********************************************")
 print("Test ex2")
 print(list_comp())
+print("********************************************")
+print("Test ex3")
+print("Ex3 boom_7_for: ",end=" ")
+print(boom_7_for(21))
+print("Ex3 boom_7_list_comprehension: ",end=" ")
+print(boom_7_list_comprehension(21))
+print("Ex3 boom_7_map: ",end=" ")
+print(boom_7_map(21))
