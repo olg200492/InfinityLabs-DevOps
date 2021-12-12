@@ -1,4 +1,5 @@
 def func(*args,**keyargs):
+    """if arg name is name prints it's value """
     flag = 0
     for key, value in keyargs.items():
         if key == "name":
