@@ -4,7 +4,7 @@ class Point:
     """A class for 2-D Point"""
     counter = 0
     def __init__(self, x=0.0, y=0.0):
-        """init an object with 2 points and adds to class attribute counter += 1"""
+        """init an object with 2 points and adds to class attribute counter  1"""
         if not isinstance(x, numbers.Number) or not isinstance(y, numbers.Number):
             print("Error:You entered non numbers type")
             self.x = 0.0
@@ -19,35 +19,37 @@ class Point:
         return sqrt(self.x**2 + self.y**2)
     
     def __add__(self, other):
-        """implantation of '+' operator """
+        """overrides __add__ built in """
         x = self.x + other.x
         y = self.y + other.y
         return Point(x, y)
         
     def __sub__(self, other):
-        """implantation of '-' operator """
-        self.x = self.x - other.x
-        self.y = self.y - other.y
+        """overrides __sub__ built in """
+        x = self.x - other.x
+        y = self.y - other.y
+        return Point(x, y)
     
     def __mul__(self, scalar):
-        """implantation of '*' operator """
+        """overrides mul built in """
         x = self.x * scalar
         y = self.y * scalar
         return Point(x, y)
     
     def __imul__(self, scalar):
-        """implantation of '*=' operator """
+        """overrides __imul__ built in """
         self.x = self.x * scalar
         self.y = self.y * scalar
         return self
     
     def __truediv__(self, scalar):
-        """implantation of '/' operator """
-        self.x = self.x / scalar
-        self.y = self.y / scalar
+        """overrides __truediv__ built in """
+        x = self.x / scalar
+        y = self.y / scalar
+        return Point(x, y)
         
     def __str__(self):
-        """implantation of str """
+        """overrides  __str__  built-in"""
         return "Point("+str(self.x) + ", "+ str(self.y) +")"
     
     @classmethod
@@ -56,11 +58,11 @@ class Point:
         return cls.counter
     
     def __len__(self):
-        """returns length of point """
-        return 2
+        """returns length of point attributes"""
+        return len(self.__dict__.keys())
         
     def __del__(self):
-        """sets class attribute counter -= 1 and deletes self """
+        """subtracts class attribute counter  1 and deletes self """
         Point.counter -= 1
         del self
         
