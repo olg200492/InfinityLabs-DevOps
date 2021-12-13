@@ -1,5 +1,5 @@
 import numbers
-from math import sqrt
+from math import e, sqrt
 
 class Point:
     """A class for 2-D Point"""
@@ -19,16 +19,26 @@ class Point:
         return "Point("+str(self.__x) + ", "+ str(self.__y) +")"
     
     def get_point_x(self):
+        """return point x attribute"""
         return self.__x
     
     def get_point_y(self):
+        """return point y attribute"""
         return self.__y
 
     def set_point_x(self, x):
-        self.__x = float(x)
+        """ sets self.__x to x"""
+        if isinstance(x, numbers.Number):
+            self.__x = float(x)
+        else:
+            print("Invalid x input")
     
     def set_point_y(self, y):
-        self.__y = float(y)    
+        """ sets self.__y to y"""
+        if isinstance(y, numbers.Number):
+            self.__y = float(y)
+        else:
+            print("Invalid y input")    
         
     def del_point_x(self):
         """subtracts class attribute counter  1 and deletes self """
@@ -44,7 +54,9 @@ class Point:
 p = Point(2, 3)
 print(p)
 p.x = 3
-p.y = 4
+p.y = "g"
+p.y = 7
 print(p)
 del p.x
 del p.y
+
