@@ -8,7 +8,7 @@ def sum_list_for(ls):
 
 def sum_list_reduce(ls):
     """"sum list varibales using reduce"""
-    return reduce(lambda x,y :x+y,ls)
+    return reduce(lambda x,y :x+y, ls)
 
 def sum_list_sum_func(ls):
     """"sum list varibales using built in sum"""
