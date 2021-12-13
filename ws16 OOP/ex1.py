@@ -19,7 +19,7 @@ class Point:
         return sqrt(self.x**2 + self.y**2)
     
     def __add__(self, other):
-        """overrides __add__ built in """
+        """overrides __add__ built-in """
         x = self.x + other.x
         y = self.y + other.y
         return Point(x, y)
@@ -49,7 +49,7 @@ class Point:
         return Point(x, y)
         
     def __str__(self):
-        """overrides  __str__  built-in"""
+        """overrides  __str__  built-in, returns string"""
         return "Point("+str(self.x) + ", "+ str(self.y) +")"
     
     @classmethod
@@ -58,7 +58,7 @@ class Point:
         return cls.counter
     
     def __len__(self):
-        """returns length of point attributes"""
+        """overrides __len__ returns number of attributes"""
         return len(self.__dict__.keys())
         
     def __del__(self):
