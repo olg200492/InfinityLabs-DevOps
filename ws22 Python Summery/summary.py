@@ -35,7 +35,10 @@ def dir_list_no_dunder1(string):
     return list
 def dir_list_no_dunder2(string):
     return [item  for item in dir(string) if not item.startswith("__")]
+
+def dir_list_no_dunder3(string):
+    return list(filter(lambda key:not key.startswith("__"), dir(string)))
         
 #capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
 #dir_list_no_dunder1()
-print(dir_list_no_dunder2("olga"))
+print(dir_list_no_dunder3("olga"))
