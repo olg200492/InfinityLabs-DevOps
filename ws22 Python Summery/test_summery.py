@@ -1,5 +1,5 @@
 import unittest
-from  summary import return_file_name, check_if_prime, lambda1, lambda2, increment_list
+from  summary import return_file_name, check_if_prime, lambda1, lambda2, increment_list ,remove_not_str_from_list
 
 class SummeryTest(unittest.TestCase):
     
@@ -33,6 +33,14 @@ class SummeryTest(unittest.TestCase):
         ls = [1, 2, 3]
         increment_list(ls)
         self.assertListEqual(ls, [2, 3, 4])
+        
+    def test_remove_str_from_list(self):
+        ls = ["o",1 ,3 ,4, "l", 8, (6,6) ,"g","a"]
+        id1 = id(ls)
+        remove_not_str_from_list(ls)
+        id2 = id(ls)
+        self.assertListEqual(ls, ["o", "l", "g" , "a"])
+        self.assertEqual(id1, id2)
         
 if __name__ == '__main__':
     unittest.main()

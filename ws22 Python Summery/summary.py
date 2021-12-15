@@ -43,6 +43,16 @@ def increment_list(ls):
     for i in range(len(ls)):
         ls[i] += 1
         
+def remove_not_str_from_list(ls):
+    #return list(filter(lambda item:isinstance(item, str) , ls))
+    i = 0
+    while i < len(ls):
+        if not isinstance(ls[i], str):
+            ls.remove(ls[i])
+            i -= 1
+        i += 1
+        
+        
 #capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
 #dir_list_no_dunder1()
 #print(dir_list_no_dunder3("olga"))
