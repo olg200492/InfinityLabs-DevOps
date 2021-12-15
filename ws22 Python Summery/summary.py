@@ -25,6 +25,17 @@ def check_if_prime(number):
 lambda1 = lambda x:x**2
 
 lambda2 = lambda x, y:x + y
-            
+
+def dir_list_no_dunder1(string):
+    list = []
+    for item in dir(string):
+        if not item.startswith("__"):
+            list.append(item)
+    print(list)
+    return list
+def dir_list_no_dunder2(string):
+    return [item  for item in dir(string) if not item.startswith("__")]
         
-capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
+#capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
+#dir_list_no_dunder1()
+print(dir_list_no_dunder2("olga"))
