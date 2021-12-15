@@ -86,14 +86,14 @@ class Point:
         if isinstance(x, numbers.Number):
             self.__x = float(x)
         else:
-            print("Invalid x input")
+            raise ValueNotNumber
     
     def set_point_y(self, y):
         """ sets self.__y to y"""
         if isinstance(y, numbers.Number):
             self.__y = float(y)
         else:
-            print("Invalid y input")    
+            raise ValueNotNumber    
         
     def del_point_x(self):
         """subtracts class attribute counter  1 and deletes self """

@@ -43,5 +43,25 @@ class PointTest(unittest.TestCase):
         p6 = self.p1 /2
         self.assertEqual(p6.x, 0.5)
         self.assertEqual(p6.y, 1)
+        
+    def testLen(self):
+        self.assertEqual(len(self.p1), 2)
+    
+    def testGet_point_x(self):
+        self.assertEqual(self.p1.get_point_x(), 1)
+    
+    def testGet_point_y(self):
+        self.assertEqual(self.p1.get_point_y(), 2)
+        
+    def testSet_point_x(self):
+        self.p1.set_point_x(5)
+        self.assertEqual(self.p1.x, 5)
+        self.assertRaises(ValueNotNumber, self.p1.set_point_x, 'k')
+        
+    def testSet_point_y(self):
+        self.p1.set_point_y(6)
+        self.assertEqual(self.p1.y, 6)
+        self.assertRaises(ValueNotNumber, self.p1.set_point_y, "mmm")
+       
 if __name__ == '__main__':
     unittest.main()
