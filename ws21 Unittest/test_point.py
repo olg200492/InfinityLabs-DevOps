@@ -19,6 +19,7 @@ class PointTest(unittest.TestCase):
     def testDistance_from_origin(self):
         self.assertEqual(self.p1.distance_from_origin(), sqrt(5))
     
+    
     def testAdd(self):
         p3 = self.p1 + self.p2
         self.assertEqual(p3.x, 4)
@@ -43,6 +44,7 @@ class PointTest(unittest.TestCase):
         p6 = self.p1 /2
         self.assertEqual(p6.x, 0.5)
         self.assertEqual(p6.y, 1)
+        self.assertRaises(ZeroDivisionError, self.p1.__truediv__ , 0 )
         
     def testLen(self):
         self.assertEqual(len(self.p1), 2)
@@ -62,6 +64,8 @@ class PointTest(unittest.TestCase):
         self.p1.set_point_y(6)
         self.assertEqual(self.p1.y, 6)
         self.assertRaises(ValueNotNumber, self.p1.set_point_y, "mmm")
+        
+        
        
 if __name__ == '__main__':
     unittest.main()
