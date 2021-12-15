@@ -38,7 +38,11 @@ def dir_list_no_dunder2(string):
 
 def dir_list_no_dunder3(string):
     return list(filter(lambda key:not key.startswith("__"), dir(string)))
+
+def increment_list(ls):
+    for i in range(len(ls)):
+        ls[i] += 1
         
 #capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
 #dir_list_no_dunder1()
-print(dir_list_no_dunder3("olga"))
+#print(dir_list_no_dunder3("olga"))

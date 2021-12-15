@@ -1,5 +1,5 @@
 import unittest
-from  summary import return_file_name, check_if_prime, lambda1, lambda2
+from  summary import return_file_name, check_if_prime, lambda1, lambda2, increment_list
 
 class SummeryTest(unittest.TestCase):
     
@@ -28,6 +28,11 @@ class SummeryTest(unittest.TestCase):
         self.assertEqual(lambda2(0 ,1), 1)
         self.assertEqual(lambda2(-2 ,-6), -8)
         self.assertEqual(lambda2(2.5, 0.5), 3)
-
+        
+    def test_increment_list(self):
+        ls = [1, 2, 3]
+        increment_list(ls)
+        self.assertListEqual(ls, [2, 3, 4])
+        
 if __name__ == '__main__':
     unittest.main()
