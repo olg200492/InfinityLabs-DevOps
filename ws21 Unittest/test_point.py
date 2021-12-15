@@ -65,6 +65,8 @@ class PointTest(unittest.TestCase):
         self.assertEqual(self.p1.y, 6)
         self.assertRaises(ValueNotNumber, self.p1.set_point_y, "mmm")
         
+    def testStr(self):
+        self.assertEqual(str(self.p1), "Point(1.0, 2.0)")
         
        
 if __name__ == '__main__':
