@@ -10,6 +10,8 @@ class PointTest(unittest.TestCase):
     def testInit(self):
         self.assertEqual(self.p1.x, 1.0)
         self.assertEqual(self.p1.y, 2.0)
+        self.assertIsInstance(self.p1.x, float)
+        self.assertIsInstance(self.p1.y, float)
         self.assertRaises(ValueNotNumber, Point, 1, 'j')
         self.assertRaises(ValueNotNumber, Point, 'k', 'j')
         self.assertRaises(ValueNotNumber, Point, 'k', 2)
@@ -36,5 +38,10 @@ class PointTest(unittest.TestCase):
         self.p1 *= 3
         self.assertEqual(self.p1.x, 3)
         self.assertEqual(self.p1.y, 6)
+        
+    def testTrueDiv(self):
+        p6 = self.p1 /2
+        self.assertEqual(p6.x, 0.5)
+        self.assertEqual(p6.y, 1)
 if __name__ == '__main__':
     unittest.main()
