@@ -1,18 +1,26 @@
 import numbers
 from math import sqrt
+
+class Error(Exception):
+    """Base class for other exceptions"""
+    pass
+
+
+class ValueNotNumber(Error):
+    """Raised when the input value is not a number"""
+    pass
+
 class Point:
     """A class for 2-D Point"""
     counter = 0
     def __init__(self, x=0.0, y=0.0):
         """init an object with 2 points and adds to class attribute counter  1"""
+        
         if not isinstance(x, numbers.Number) or not isinstance(y, numbers.Number):
-            print("Error:You entered non numbers type")
-            self.x = 0.0
-            self.y = 0.0
-        else:
-            self.x = float(x)
-            self.y = float(y)
-        Point.counter += 1
+            raise ValueNotNumber
+        self.__x = float(x)
+        self.__y = float(y)               
+            
             
     def distance_from_origin(self):
         """returns distance from (0, 0)"""
