@@ -21,6 +21,20 @@ class PointTest(unittest.TestCase):
         p3 = self.p1 + self.p2
         self.assertEqual(p3.x, 4)
         self.assertEqual(p3.y, 6)
-    
+        
+    def testSub(self):
+        p4 = self.p1 - self.p2
+        self.assertEqual(p4.x, -2)
+        self.assertEqual(p4.y, -2)
+        
+    def testMul(self):
+        p5 = self.p1 * 2
+        self.assertEqual(p5.x, 2)
+        self.assertEqual(p5.y, 4)
+        
+    def testIMul(self):
+        self.p1 *= 3
+        self.assertEqual(self.p1.x, 3)
+        self.assertEqual(self.p1.y, 6)
 if __name__ == '__main__':
     unittest.main()
