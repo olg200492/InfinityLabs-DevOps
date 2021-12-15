@@ -97,12 +97,13 @@ class Point:
         
     def del_point_x(self):
         """subtracts class attribute counter  1 and deletes self """
-        print("can't be deleted x")
-        del self
+        del self.__x
         
     def del_point_y(self):
         """subtracts class attribute counter  1 and deletes self """
-        del self
+        del self.__y
 
     x = property(get_point_x, set_point_x, del_point_x, None)
     y = property(get_point_y, set_point_y, del_point_y, None)
+
+

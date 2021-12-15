@@ -4,10 +4,15 @@ from point import Point, ValueNotNumber
 
 class PointTest(unittest.TestCase):
     def setUp(self):
+        """set up 2 point object"""
         self.p1 = Point(1, 2)
         self.p2 = Point(3, 4)
     
     def testInit(self):
+        """test for init method
+        -test valid input
+        -test if object attributes type float
+        -test exception raised when initialize with non type number"""
         self.assertEqual(self.p1.x, 1.0)
         self.assertEqual(self.p1.y, 2.0)
         self.assertIsInstance(self.p1.x, float)
@@ -68,6 +73,9 @@ class PointTest(unittest.TestCase):
     def testStr(self):
         self.assertEqual(str(self.p1), "Point(1.0, 2.0)")
         
+
+        
+  
        
 if __name__ == '__main__':
     unittest.main()
