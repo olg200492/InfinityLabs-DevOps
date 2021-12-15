@@ -61,10 +61,20 @@ def print_dict_keys_and_values(dic):
     for key, value in dic.items():
         print("(key:" + str(key) + ", value:" + str(value) +")" , end=" ")
     print("")
+    
+def dict_from_list1(ls):
+    dic = {}
+    for index, ele in enumerate(ls):
+        dic[index] = ele
+    return dic
+
+def dict_from_list2(ls):    
+    return {item : value for (item, value) in enumerate(ls)}
         
 #capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
 #dir_list_no_dunder1()
 #print(dir_list_no_dunder3("olga"))
 
-print_list_index_and_elements(["o", "l", "g" , "a"])
-print_dict_keys_and_values({1:"o", 2:"l"})
+#print_list_index_and_elements(["o", "l", "g" , "a"])
+#print_dict_keys_and_values({1:"o", 2:"l"})
+print(dict_from_list2(['a', 'b', 'c']))
