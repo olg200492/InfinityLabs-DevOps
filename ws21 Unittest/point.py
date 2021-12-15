@@ -19,7 +19,8 @@ class Point:
         if not isinstance(x, numbers.Number) or not isinstance(y, numbers.Number):
             raise ValueNotNumber
         self.__x = float(x)
-        self.__y = float(y)               
+        self.__y = float(y)    
+        Point.counter += 1           
             
             
     def distance_from_origin(self):
@@ -102,6 +103,10 @@ class Point:
     def del_point_y(self):
         """subtracts class attribute counter  1 and deletes self """
         del self.__y
+    
+    def __del__(self):
+        Point.counter -= 1
+        del self
 
     x = property(get_point_x, set_point_x, del_point_x, None)
     y = property(get_point_y, set_point_y, del_point_y, None)

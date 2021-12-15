@@ -24,6 +24,8 @@ class PointTest(unittest.TestCase):
     def testDistance_from_origin(self):
         self.assertEqual(self.p1.distance_from_origin(), sqrt(5))
     
+    def testClassMethod(self):
+        self.assertEqual(self.p1.get_counter(), 2)
     
     def testAdd(self):
         p3 = self.p1 + self.p2
@@ -73,6 +75,10 @@ class PointTest(unittest.TestCase):
     def testStr(self):
         self.assertEqual(str(self.p1), "Point(1.0, 2.0)")
         
+    def testDel(self):
+        del self.p1.x
+        self.assertNotIn("_Point__x", self.p1.__dict__)
+        self.assertEqual(len(self.p1.__dict__.keys()), 1)
 
         
   
