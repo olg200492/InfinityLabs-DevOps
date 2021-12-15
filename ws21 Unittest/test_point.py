@@ -78,9 +78,7 @@ class PointTest(unittest.TestCase):
     def testDel(self):
         del self.p1.x
         self.assertNotIn("_Point__x", self.p1.__dict__)
-        self.assertEqual(len(self.p1.__dict__.keys()), 1)
-
-        
+        self.assertEqual(len(self.p1.__dict__.keys()), 1)        
   
        
 if __name__ == '__main__':
