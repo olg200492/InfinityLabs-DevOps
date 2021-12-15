@@ -52,7 +52,19 @@ def remove_not_str_from_list(ls):
             i -= 1
         i += 1
         
+def print_list_index_and_elements(ls):
+    for index, ele in enumerate(ls):
+        print("(" + str(index) + ", " + str(ele) +")" , end=" ")
+    print("")
+    
+def print_dict_keys_and_values(dic):
+    for key, value in dic.items():
+        print("(key:" + str(key) + ", value:" + str(value) +")" , end=" ")
+    print("")
         
 #capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
 #dir_list_no_dunder1()
 #print(dir_list_no_dunder3("olga"))
+
+print_list_index_and_elements(["o", "l", "g" , "a"])
+print_dict_keys_and_values({1:"o", 2:"l"})
