@@ -70,6 +70,44 @@ def dict_from_list1(ls):
 
 def dict_from_list2(ls):    
     return {item : value for (item, value) in enumerate(ls)}
+
+class DefaultDict():
+    defualtValue = None
+    
+    def __init__(self, num):
+        self.storage = [[] for _ in range(100)]
+        self.size = 100
+        self.length = 0
+        DefaultDict.defualtValue = num
+        
+    def __setitem__(self, key, value):
+        idx = hash(key) % self.size
+        for ele in self.storage[idx]:
+            if key == ele[0]:
+                ele[1] = value
+                break
+        else:
+            self.storage[idx].append([key, value])
+            self.length += 1
+                
+    def __getitem__(self, key):
+        idx = hash(key) % self.size
+        for ele in self.storage[idx]:
+            if ele[0] == key:
+                return ele[1]
+
+        return DefaultDict.defualtValue
+    
+    def __str__(self):
+        string = "["
+        for item in self.storage:
+            string += str(item) + " ,"
+            string += "]"
+        return string
+    
+    
+        
+            
         
 #capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
 #dir_list_no_dunder1()
@@ -77,4 +115,9 @@ def dict_from_list2(ls):
 
 #print_list_index_and_elements(["o", "l", "g" , "a"])
 #print_dict_keys_and_values({1:"o", 2:"l"})
-print(dict_from_list2(['a', 'b', 'c']))
+#print(dict_from_list2(['a', 'b', 'c']))
+d = DefaultDict(0)
+d["a"] = "hello"
+print(d)
+print(d["a"])
+print(d["b"])
