@@ -161,6 +161,8 @@ class DefaultDict():
     """Class implemention of Dict 
     """
     defualtValue = None
+    size = 100
+    length = 0
     
     def __init__(self, num):
         """Init an object with attributes:
@@ -173,8 +175,7 @@ class DefaultDict():
             num (int): defualt number to keys does not exist
         """
         self.storage = [[] for _ in range(100)]
-        self.size = 100
-        self.length = 0
+        
         DefaultDict.defualtValue = num
         
     def __setitem__(self, key, value):
@@ -184,14 +185,14 @@ class DefaultDict():
             key ([int, float, str]): 
             value ([int, float, str]): 
         """
-        idx = hash(key) % self.size
+        idx = hash(key) % DefaultDict.size
         for ele in self.storage[idx]:
             if key == ele[0]:
                 ele[1] = value
                 break
         else:
             self.storage[idx].append([key, value])
-            self.length += 1
+            DefaultDict.length += 1
                 
     def __getitem__(self, key):
         """Implemention of getitem
@@ -225,7 +226,7 @@ class DefaultDict():
         
             
         
-#capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
+capital_letters_file("/home/olga/Desktop/git-InfinityLabs/olga-lapovsky/ws22 Python Summery/file.txt")
 #dir_list_no_dunder1()
 #print(dir_list_no_dunder3("olga"))
 
