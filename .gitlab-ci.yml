@@ -1,0 +1,10 @@
+image: alpine:latest
+
+variables:
+  BUILD_TYPE: release
+
+test_var:
+  script:
+    - echo ${BUILD_TYPE}
+    - exit 0
+
