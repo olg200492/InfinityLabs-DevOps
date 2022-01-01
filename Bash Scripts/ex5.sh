@@ -4,6 +4,7 @@ echo ${DIR}
 paths=$(find /home/olga/Desktop -type d -name $DIR)
 for path in ${paths}; do
     for file in $( ls -A ${path}); do
-        echo $(file ${path}/${file})
+        file_name=${file}
+        echo $(file ${path}/${file}| awk 'BEGIN { print $file_name } { print $2 }')
     done
 done
