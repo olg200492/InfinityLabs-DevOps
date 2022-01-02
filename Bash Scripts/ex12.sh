@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-$( bind '"\e[[19~": "bash ex11.sh"' )-
+bind -x '"\e[17~":./ex10.sh'
+bind -x '"\e[18~":./ex11.sh'

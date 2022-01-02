@@ -36,20 +36,32 @@ heb_dic[0x0cea]='ך'
 heb_dic[0x0cf3]='ף'
 heb_dic[0x0cf5]='ץ'
 heb_dic[0x0ced]="ם"
+heb=('-' '=' '{' '}' '[' ']' '?' '|' '' '~' '"' '!' '&' '1' '2' '3' '4' '5' '6' '7' '8' '9' '0' '@' '#' '$' '%' '^' '&' '(' ')' '/' "'" 'ק' 'ר' 'א' 'ט' 'ו' 'ן' 'ם' 'פ' 'ש' 'ד' 'ג' 'כ' 'ע' 'י' 'ח' 'ל' 'ך' 'ף' 'ז' 'ס' 'ב' 'ה' 'נ' 'מ' 'צ' 'ת' 'ץ')
+eng=('-' '=' '{' '}' '[' ']' '?' '|' '' '~' '"' '!' '&' '1' '2' '3' '4' '5' '6' '7' '8' '9' '0' '@' '#' '$' '%' '^' '&' '(' ')' 'q' 'w' 'e' 'r' 't' 'y' 'u' 'i' 'o' 'p' 'a' 's' 'd' 'f' 'g' 'h' 'j' 'k' 'l' ';' 'z' 'x' 'c' 'v' 'b' 'n' 'm' ',' '.')
 arr=()
 str=()
-for ((i=0;i<${#string}; i++));do
-    ch=${string:i:1}
-    c="(${ch})"
-    hebrew_key=$(xmodmap -pk | grep -i ${c} | awk '{print NR-1 "," $0}' | awk '{print $7}' )
-    arr+=(${hebrew_key})
-done
-#echo ${arr[@]}
 
+if [[ $(/home/olga/src/xkblayout-state/xkblayout-state print %n) == "English" ]]
+then
+    for ((i=0;i<${#string}; i++));do
+        ch=${string:i:1}
+        c="(${ch})"
+        hebrew_key=$(xmodmap -pk | grep -i ${c} | awk '{print NR-1 "," $0}' | awk '{print $7}' )
+        arr+=(${hebrew_key})
+    done
+    for key in "${arr[@]}"; do
+        str+=${heb_dic["${key}"]}
+    done
+else
+    for ((i=0;i<${#string}; i++));do
+        ch=${string:i:1}
+        for i  in ${heb[@]}; do
+            echo ${i}
+        str+=${i}
+        #arr+=(${hebrew_key})
+    done
+fi
 
-for key in "${arr[@]}"; do
-    str+=${heb_dic["${key}"]}
-done
 echo ${str[@]}
 
 

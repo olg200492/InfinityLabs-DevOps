@@ -1,0 +1,1 @@
+if [[ $(/home/olga/src/xkblayout-state/xkblayout-state print %n) == "English" ]]
