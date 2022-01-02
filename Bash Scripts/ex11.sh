@@ -2,11 +2,11 @@
 
 word=$(xclip -o)
 stat=$(./trans  -id ${word} | grep  -o  "English" | awk '{print $1}')
-echo ${stat}
+#echo ${stat}
 if [[ "$stat" == *"English"* ]]
 then
-    echo $(./trans -b  ${word} )
+    echo $(./trans -b  en:he ${word} )
 else
-    echo "$(./trans -b  ${word} )"
+    echo "$(./trans -b  he:en ${word} )"
 fi
 
