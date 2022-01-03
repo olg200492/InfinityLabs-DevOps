@@ -2,8 +2,7 @@
 #include "foo.h"
 
 
-int main() 
+void helloWorld()
 {
-   helloWorld();
-   return 0;
+    printf("Hello World\n");
 }

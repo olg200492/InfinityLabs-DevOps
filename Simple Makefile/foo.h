@@ -1,6 +1,9 @@
-#include <stddef.h>
+#ifndef _FOO_H_
+#define _FOO_H_
 
-void helloWorld()
-{
-    printf("Hello, World!\n");
-}
+#include <stddef.h>
+#include <stdio.h>
+
+
+void helloWorld();
+#endif
