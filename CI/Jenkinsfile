@@ -1,0 +1,38 @@
+pipeline { 
+    agent{
+            label 'gcc'
+        }
+    environment {
+        CI = true
+        ARTIFACTORY_ACCESS_TOKEN = credentials('artifactory-access-token')
+    }
+    stages {
+        stage ('Build') { 
+            steps{
+                echo 'Running build phase. '
+                sh 'make'
+            }
+        }
+        stage ('Test') { 
+            steps{
+                echo 'Running test phase. '
+                sh 'make test'
+                sh './stack_testr.out'
+            }            
+        }
+        stage ('Upload to Artifactory') { 
+            steps{
+                echo 'Uploading to Artifactory'
+                sh 'jfrog rt upload --url http://10.1.2.50:8082/artifactory/ --access-token ${ARTIFACTORY_ACCESS_TOKEN} /tmp/workspace/stack-pipeline/dslib.a  demo/'
+            }
+            
+        }
+        stage ('Clean') { 
+            steps{
+                echo 'Cleaning'
+                sh 'make clean'
+            }
+            
+        }
+    }           
+}
